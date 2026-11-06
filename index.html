@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mecelle Küllî Kâideler – Ders Çalışması</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5efe3; --paper2:#fbf8f1; --card:#fffdf8; --ink:#27221c; --ink2:#5a5146; --muted:#8a7f70;
+  --line:#e2d8c6; --green:#1f4d45; --green2:#2d6b5f; --red:#8b2f2a; --gold:#a8833a; --ok:#2e7d4f; --bad:#b03a2e;
+  --serif:"Crimson Pro", Georgia, "Times New Roman", serif;
+  --sans:Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ar:Amiri, "Traditional Arabic", "Scheherazade New", "Noto Naskh Arabic", serif;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.55}
+button{font-family:var(--sans);cursor:pointer}
+.ar{font-family:var(--ar);direction:rtl;unicode-bidi:isolate}
+/* header */
+header{background:var(--green);color:#f4ecd8;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.hwrap{max-width:1150px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 20px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:12px;margin-right:auto}
+.brand .ar{font-size:30px;line-height:1;color:#e8cf8f}
+.brand b{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.3px}
+.brand small{font-family:var(--sans);font-size:12px;opacity:.75;display:block}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{background:transparent;border:0;color:#efe6d2;padding:8px 13px;border-radius:7px;font-size:14.5px;font-weight:500}
+nav button:hover{background:rgba(255,255,255,.1)}
+nav button.on{background:#f4ecd8;color:var(--green)}
+main{max-width:1150px;margin:0 auto;padding:28px 20px 80px}
+section.view{display:none}
+section.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.2;margin:0 0 .4em}
+h1{font-size:40px} h2{font-size:30px;color:var(--green)} h3{font-size:22px}
+.lead{color:var(--ink2);font-size:20px;max-width:760px}
+.kicker{font-family:var(--sans);font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);font-weight:600}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.btn{border:1px solid var(--green);background:var(--green);color:#fff;padding:10px 18px;border-radius:8px;font-size:15px;font-weight:500}
+.btn:hover{background:var(--green2)}
+.btn.ghost{background:transparent;color:var(--green)}
+.btn.ghost:hover{background:#e9e1cf}
+.btn.sm{padding:6px 12px;font-size:13.5px}
+.btn:disabled{opacity:.45;cursor:default}
+.chip{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;margin-bottom:34px}
+.hero .ar.big{font-size:54px;color:var(--green);text-align:center;line-height:1.5;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:26px 10px;position:relative}
+.hero .ar.big:after{content:"Mecelle, Madde 2";position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:var(--sans);font-size:12px;color:var(--muted);direction:ltr}
+.stats{display:flex;gap:26px;margin:20px 0 6px;flex-wrap:wrap}
+.stat b{display:block;font-size:34px;color:var(--red);font-weight:600;line-height:1}
+.stat span{font-family:var(--sans);font-size:13px;color:var(--muted)}
+.terms dt{font-weight:700;color:var(--red);font-size:20px}
+.terms dd{margin:0 0 14px;color:var(--ink2)}
+ol.clean{margin:0;padding-left:22px} ol.clean li{margin:4px 0}
+table.cmp{width:100%;border-collapse:collapse;font-size:17px}
+table.cmp th{font-family:var(--sans);font-size:13px;text-align:left;color:var(--green);border-bottom:2px solid var(--green);padding:8px}
+table.cmp td{border-bottom:1px solid var(--line);padding:9px 8px;vertical-align:top}
+.temalist{display:flex;flex-wrap:wrap;gap:8px}
+.temalist button{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 13px;font-size:13.5px;color:var(--ink)}
+.temalist button i{font-style:normal;display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.temalist button:hover{border-color:var(--ink2)}
+.temalist button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+/* kaideler */
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:18px 0 14px;position:sticky;top:var(--hh,74px);z-index:5;background:var(--paper);padding:10px 0}
+.search{flex:1;min-width:240px;position:relative}
+.search input{width:100%;padding:11px 14px 11px 38px;border:1px solid var(--line);border-radius:9px;font-size:16px;font-family:var(--sans);background:var(--card)}
+.search input:focus{outline:2px solid var(--green2);border-color:transparent}
+.search svg{position:absolute;left:12px;top:12px;opacity:.5}
+.count{font-family:var(--sans);font-size:13px;color:var(--muted)}
+.klist{display:flex;flex-direction:column;gap:12px}
+.kcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);border-left:5px solid var(--tc,#999);scroll-margin-top:140px;transition:box-shadow .2s}
+.kcard.flash{box-shadow:0 0 0 3px var(--gold)}
+.khead{display:grid;grid-template-columns:62px 1fr auto;gap:16px;align-items:center;padding:16px 20px;cursor:pointer}
+.knum{font-family:var(--sans);font-weight:600;font-size:13px;color:var(--muted);text-align:center;line-height:1.1}
+.knum b{display:block;font-family:var(--serif);font-size:30px;color:var(--ink)}
+.kar{font-size:27px;line-height:1.6;color:var(--green);text-align:right}
+.ktr{font-size:19px;color:var(--ink);margin-top:2px}
+.kmeta{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.done-badge{font-family:var(--sans);font-size:11.5px;color:var(--ok);font-weight:600}
+.caret{transition:transform .2s;opacity:.5}
+.kcard.open .caret{transform:rotate(180deg)}
+.kbody{display:none;padding:4px 24px 22px 98px;border-top:1px dashed var(--line)}
+.kcard.open .kbody{display:block}
+.blk{margin-top:16px}
+.blk h4{font-family:var(--sans);font-size:12.5px;letter-spacing:1.2px;text-transform:uppercase;margin:0 0 6px;font-weight:600}
+.blk ul{margin:0;padding-left:20px} .blk li{margin:5px 0}
+.blk.acik h4{color:var(--green)}
+.blk.ornek h4{color:#2f5d8a}
+.blk.ornek li{list-style:none;margin-left:-20px;background:#f0f4f8;border-left:3px solid #6f93b8;padding:9px 13px;border-radius:0 7px 7px 0;margin-bottom:8px}
+.blk.istisna h4{color:var(--red)}
+.blk.istisna li{list-style:none;margin-left:-20px;background:#f9eeec;border-left:3px solid #c46b60;padding:9px 13px;border-radius:0 7px 7px 0;margin-bottom:8px}
+.blk.not h4{color:var(--gold)}
+.blk.not li{list-style:none;margin-left:-20px;background:#f8f2e2;border-left:3px solid var(--gold);padding:9px 13px;border-radius:0 7px 7px 0;margin-bottom:8px}
+.tbl{margin-top:16px;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.tbl .tt{background:#efe8d9;font-family:var(--sans);font-weight:600;font-size:13.5px;padding:8px 14px;color:var(--ink2)}
+.tbl .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tbl .col{padding:12px 14px;border-right:1px solid var(--line);font-size:17px}
+.tbl .col:last-child{border-right:0}
+.tbl .col b{display:block;color:var(--green);margin-bottom:4px;font-size:18px}
+.tbl .col ul{margin:0;padding-left:18px}
+.kfoot{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
+.rel{font-family:var(--sans);font-size:13px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rel button{border:1px solid var(--line);background:var(--paper2);border-radius:6px;padding:4px 9px;font-size:13px;color:var(--ink)}
+.rel button:hover{border-color:var(--green);color:var(--green)}
+.scale{display:flex;margin-top:10px;border-radius:8px;overflow:hidden;font-family:var(--sans);font-size:12.5px;text-align:center}
+.scale div{flex:1;padding:8px 4px;color:#fff}
+.scale small{display:block;opacity:.85;font-size:11px}
+.tree{font-size:16.5px}
+.tree .lvl{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:10px}
+.tree .node{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper2)}
+.tree .node b{color:var(--green);display:block}
+.tree .node .sub{font-size:15px;color:var(--ink2)}
+.tree .res{margin-top:6px;font-family:var(--sans);font-size:12.5px;background:#efe8d9;border-radius:5px;padding:4px 8px;display:inline-block}
+.empty{padding:40px;text-align:center;color:var(--muted);font-family:var(--sans)}
+/* flashcards */
+.fc-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:10px}
+.fc{width:min(720px,100%);height:360px;perspective:1400px;cursor:pointer}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.7,.3,1);transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px 36px;text-align:center;box-shadow:0 8px 24px rgba(60,40,10,.08)}
+.fc-back{transform:rotateY(180deg);background:#fbf6ea}
+.fc-face .num{position:absolute;top:16px;left:20px;font-family:var(--sans);font-size:13px;color:var(--muted)}
+.fc-face .tm{position:absolute;top:14px;right:18px}
+.fc-face .ar{font-size:40px;color:var(--green);line-height:1.6}
+.fc-face .hint{position:absolute;bottom:14px;font-family:var(--sans);font-size:12px;color:var(--muted)}
+.fc-back .t{font-size:25px;font-weight:600;margin-bottom:12px}
+.fc-back .d{font-size:17.5px;color:var(--ink2);max-height:170px;overflow:auto}
+.fc-ctrl{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+.fc-ctrl .btn.know{background:var(--ok);border-color:var(--ok)}
+.fc-ctrl .btn.again{background:var(--bad);border-color:var(--bad)}
+.fc-prog{font-family:var(--sans);font-size:13.5px;color:var(--muted)}
+.bar{height:6px;background:#e7dfcf;border-radius:9px;overflow:hidden;width:min(720px,100%)}
+.bar i{display:block;height:100%;background:var(--green);transition:width .3s}
+select{font-family:var(--sans);font-size:14.5px;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+/* quiz */
+.qsetup{max-width:780px}
+.opts{display:grid;gap:10px}
+.optgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:8px 0 20px}
+.optcard{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:12px 14px;text-align:left;font-family:var(--sans);font-size:14px;color:var(--ink)}
+.optcard b{display:block;font-size:15px;margin-bottom:2px}
+.optcard span{color:var(--muted);font-size:12.5px}
+.optcard.on{border-color:var(--green);background:#eaf1ee;box-shadow:inset 0 0 0 1px var(--green)}
+.lbl{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink2);margin:16px 0 6px;display:block}
+.qbox{max-width:820px;margin:0 auto}
+.qtop{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:13.5px;color:var(--muted);margin-bottom:10px}
+.qtype{font-family:var(--sans);font-size:12px;letter-spacing:1.3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.qtext{font-size:22px;line-height:1.5;margin-bottom:18px}
+.qtext .ar{font-size:34px;color:var(--green);display:block;text-align:center;margin:8px 0}
+.ans{display:flex;flex-direction:column;gap:10px}
+.ans button{text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:13px 16px;font-family:var(--serif);font-size:18.5px;color:var(--ink);display:flex;gap:12px;align-items:flex-start;transition:border-color .15s,background .15s}
+.ans button:hover:not(:disabled){border-color:var(--green2);background:#f4f7f5}
+.ans button .L{font-family:var(--sans);font-weight:600;font-size:13px;width:24px;height:24px;border-radius:50%;background:#efe8d9;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ans button .ar{font-size:24px}
+.ans button.ok{border-color:var(--ok);background:#e8f4ec}
+.ans button.ok .L{background:var(--ok);color:#fff}
+.ans button.no{border-color:var(--bad);background:#f8e9e7}
+.ans button.no .L{background:var(--bad);color:#fff}
+.ans button:disabled{cursor:default}
+.fb{margin-top:16px;border-radius:10px;padding:14px 18px;font-size:17.5px;display:none}
+.fb.show{display:block}
+.fb.ok{background:#e8f4ec;border:1px solid #b9dcc6}
+.fb.no{background:#f8e9e7;border:1px solid #e6bdb7}
+.fb b.v{font-family:var(--sans);font-size:14px;display:block;margin-bottom:4px}
+.fb .ar{font-size:24px;color:var(--green)}
+.linkbtn{background:none;border:0;color:var(--green);text-decoration:underline;font-size:14px;padding:0;margin-top:6px}
+.qnav{display:flex;justify-content:flex-end;margin-top:18px;gap:10px}
+.result{text-align:center}
+.ring{width:170px;height:170px;margin:10px auto 16px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:600;flex-direction:column;line-height:1}
+.ring b small{font-family:var(--sans);font-size:13px;color:var(--muted);font-weight:400;margin-top:6px}
+.wrongs{text-align:left;margin-top:20px}
+.wrongs li{margin:6px 0}
+/* progress */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px}
+.pcell{aspect-ratio:1;border-radius:7px;border:1px solid var(--line);background:var(--card);font-family:var(--sans);font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--ink2);cursor:pointer;position:relative}
+.pcell:hover{border-color:var(--ink)}
+.pcell.s1{background:#dfece6}
+.pcell.s2{background:#9cc7b3;color:#123}
+.pcell.s3{background:var(--green);color:#fff}
+.pcell.w:after{content:"";position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--bad)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--sans);font-size:12.5px;color:var(--ink2);margin:12px 0}
+.legend i{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:-2px;margin-right:5px;border:1px solid var(--line)}
+.tprog{display:flex;flex-direction:column;gap:9px}
+.tprog .row{display:grid;grid-template-columns:230px 1fr 60px;gap:12px;align-items:center;font-family:var(--sans);font-size:13.5px}
+.tprog .row .bar{width:100%}
+footer{text-align:center;font-family:var(--sans);font-size:12.5px;color:var(--muted);padding:30px 20px;border-top:1px solid var(--line)}
+@media (max-width:760px){
+  body{font-size:17.5px}
+  h1{font-size:30px}
+  .hero{grid-template-columns:1fr}
+  .hero .ar.big{font-size:40px}
+  .khead{grid-template-columns:44px 1fr;gap:10px;padding:14px}
+  .kmeta{grid-column:1/-1;flex-direction:row;justify-content:space-between}
+  .kar{font-size:23px}
+  .kbody{padding:4px 16px 18px}
+  .fc{height:400px}
+  .fc-face .ar{font-size:30px}
+  .tprog .row{grid-template-columns:1fr 60px}
+  .tprog .row .bar{grid-column:1/-1;grid-row:2}
+  .toolbar{top:0;position:static}
+  header{position:static}
+  .brand .ar{font-size:24px}
+}
+.imza{padding:0!important;border:0!important;text-align:left!important;background:var(--green);color:#efe6d2;font-family:var(--sans);font-size:13.5px;letter-spacing:.4px}
+.imza div{max-width:1150px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.imza b{color:#e8cf8f;font-weight:600;letter-spacing:1px}
+@media print{header,nav,.toolbar,.kfoot{display:none!important}.kbody{display:block!important}section.view{display:none!important}#v-kaideler{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="brand"><span class="ar">مجلة</span><div><b>Mecelle Küllî Kâideler</b><small>Ders çalışma ve test programı</small></div></div>
+    <nav id="nav">
+      <button data-v="giris" class="on">Giriş</button>
+      <button data-v="kaideler">Kâideler</button>
+      <button data-v="kartlar">Ezber Kartları</button>
+      <button data-v="test">Testler</button>
+      <button data-v="ilerleme">İlerleme</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- GİRİŞ -->
+<section class="view on" id="v-giris">
+  <div class="hero">
+    <div>
+      <div class="kicker">Mecelle-i Ahkâm-ı Adliyye · Madde 1–100</div>
+      <h1>Küllî Kâideler</h1>
+      <p class="lead">Mecelle’nin ilk yüz maddesi, fıkhın binlerce meselesini birkaç kelimeye sığdıran genel hukuk prensipleridir. Bu program kâideleri açıklama, örnek ve istisnalarıyla anlatır; ezber kartları ve testlerle pekiştirmenizi sağlar.</p>
+      <div class="stats">
+        <div class="stat"><b>99</b><span>küllî kâide</span></div>
+        <div class="stat"><b id="st-ornek">–</b><span>örnek mesele</span></div>
+        <div class="stat"><b id="st-ist">–</b><span>istisna</span></div>
+        <div class="stat"><b>15</b><span>tema</span></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+        <button class="btn" onclick="go('kaideler')">Kâideleri incele</button>
+        <button class="btn ghost" onclick="go('test')">Teste başla</button>
+      </div>
+    </div>
+    <div class="ar big">الأمور بمقاصدها</div>
+  </div>
+
+  <div class="grid g2">
+    <div class="box">
+      <h3>Temel Kavramlar</h3>
+      <dl class="terms" id="g-kavram"></dl>
+    </div>
+    <div class="grid" style="gap:18px">
+      <div class="box">
+        <h3>Küllî Kâideleri Bilmenin Önemi</h3>
+        <ol class="clean" id="g-onem"></ol>
+      </div>
+      <div class="box">
+        <h3>Kâidelerin Dayanakları</h3>
+        <ol class="clean" id="g-kaynak"></ol>
+        <div class="blk not" style="margin-top:14px"><h4>Tarihî not</h4><ul id="g-not"></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:18px">
+    <h3>Küllî Kâideler ile Usûl Kâideleri Arasındaki Farklar</h3>
+    <table class="cmp"><thead><tr><th style="width:40px">#</th><th>Küllî Kâideler</th><th>Usûl Kâideleri</th></tr></thead><tbody id="g-fark"></tbody></table>
+  </div>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="box">
+      <h3>Başlıca Mecelle Şerhleri</h3>
+      <table class="cmp"><tbody id="g-serh"></tbody></table>
+    </div>
+    <div class="box">
+      <h3>Temalara Göre Kâideler</h3>
+      <p style="margin-top:0;color:var(--ink2);font-size:17px">Bir temaya tıklayarak o gruptaki kâidelere gidin.</p>
+      <div class="temalist" id="g-tema"></div>
+    </div>
+  </div>
+</section>
+
+<!-- KAİDELER -->
+<section class="view" id="v-kaideler">
+  <div class="kicker">Ana Bölüm</div>
+  <h2>Kâideler</h2>
+  <p class="lead" style="font-size:18px">Her kâidenin üzerine tıklayarak açıklamasını, örneklerini ve istisnalarını açın. Arapça veya Türkçe arama yapabilirsiniz.</p>
+  <div class="toolbar">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Ara: zarar, örf, yakîn, 17, الضرر …">
+    </div>
+    <select id="tf"><option value="">Tüm temalar</option></select>
+    <button class="btn ghost sm" id="openAll">Tümünü aç</button>
+    <span class="count" id="kcount"></span>
+  </div>
+  <div class="klist" id="klist"></div>
+</section>
+
+<!-- KARTLAR -->
+<section class="view" id="v-kartlar">
+  <div class="kicker">Ezber</div>
+  <h2>Ezber Kartları</h2>
+  <p class="lead" style="font-size:18px">Kartın ön yüzünde Arapça kâide, arka yüzünde anlamı yer alır. Karta tıklayın veya <b>boşluk</b> tuşuna basın; <b>←/→</b> ile gezinin.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0">
+    <select id="fc-deck"></select>
+    <select id="fc-yon"><option value="ar">Ön yüz: Arapça</option><option value="tr">Ön yüz: Türkçe</option></select>
+    <button class="btn ghost sm" id="fc-shuffle">Karıştır</button>
+  </div>
+  <div class="fc-wrap">
+    <div class="bar"><i id="fc-bar"></i></div>
+    <div class="fc" id="fc"><div class="fc-in">
+      <div class="fc-face fc-front"><span class="num" id="fc-n1"></span><span class="tm" id="fc-t1"></span><div id="fc-front"></div><span class="hint">çevirmek için tıklayın</span></div>
+      <div class="fc-face fc-back"><span class="num" id="fc-n2"></span><div id="fc-back"></div></div>
+    </div></div>
+    <div class="fc-ctrl">
+      <button class="btn ghost" id="fc-prev">← Önceki</button>
+      <button class="btn again" id="fc-again">Tekrar et</button>
+      <button class="btn know" id="fc-know">Biliyorum</button>
+      <button class="btn ghost" id="fc-next">Sonraki →</button>
+    </div>
+    <div class="fc-prog" id="fc-prog"></div>
+  </div>
+</section>
+
+<!-- TEST -->
+<section class="view" id="v-test">
+  <div id="t-setup" class="qsetup">
+    <div class="kicker">Ölçme ve Değerlendirme</div>
+    <h2>Testler</h2>
+    <p class="lead" style="font-size:18px">Soru türünü, temayı ve soru sayısını seçin. Her sorudan sonra doğru cevap açıklamasıyla birlikte gösterilir.</p>
+    <span class="lbl">Soru türü</span>
+    <div class="optgrid" id="t-types"></div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <div><span class="lbl">Tema</span><select id="t-tema"><option value="">Tüm temalar</option></select></div>
+      <div><span class="lbl">Soru sayısı</span><select id="t-say"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></div>
+      <div><span class="lbl">Kapsam</span><select id="t-kapsam"><option value="">Bütün kâideler</option><option value="yanlis">Yalnızca yanlış yaptıklarım</option><option value="calisilan">Yalnızca çalıştıklarım</option></select></div>
+    </div>
+    <div style="margin-top:24px"><button class="btn" id="t-start">Testi başlat</button> <span class="count" id="t-msg" style="margin-left:10px"></span></div>
+  </div>
+  <div id="t-run" class="qbox" style="display:none"></div>
+</section>
+
+<!-- İLERLEME -->
+<section class="view" id="v-ilerleme">
+  <div class="kicker">Takip</div>
+  <h2>İlerleme</h2>
+  <p class="lead" style="font-size:18px">Çalıştığınız kâideler, ezber kartları ve test sonuçlarınız bu tarayıcıda saklanır.</p>
+  <div class="grid g3" style="margin:18px 0" id="p-stats"></div>
+  <div class="box">
+    <h3>Kâide Haritası</h3>
+    <div class="legend">
+      <span><i style="background:var(--card)"></i>Henüz çalışılmadı</span>
+      <span><i style="background:#dfece6"></i>Okundu</span>
+      <span><i style="background:#9cc7b3"></i>Okundu + kartta biliniyor</span>
+      <span><i style="background:var(--green)"></i>Testte de doğru cevaplandı</span>
+      <span><i style="background:var(--bad);border-radius:50%"></i>Son cevabı yanlış</span>
+    </div>
+    <div class="pgrid" id="p-grid"></div>
+  </div>
+  <div class="box" style="margin-top:18px">
+    <h3>Temalara Göre Test Başarısı</h3>
+    <div class="tprog" id="p-tema"></div>
+  </div>
+  <div class="box" style="margin-top:18px">
+    <h3>Son Testler</h3>
+    <div id="p-hist"></div>
+    <button class="btn ghost sm" id="p-reset" style="margin-top:14px">İlerlemeyi sıfırla</button>
+  </div>
+</section>
+</main>
+<footer class="imza"><div><span>© 2026 · Her hakkı saklıdır.</span><span>Designed by: <b>M.ALPKİRAY</b></span></div></footer>
+
+<script>
+const TEMALAR = {
+  tanim:   {ad:"Fıkhın Tanımı", renk:"#6b5b45"},
+  niyet:   {ad:"Niyet ve Maksat", renk:"#8a3b2e"},
+  yakin:   {ad:"Asıl Hal, Yakîn ve Kadîm", renk:"#2f5d62"},
+  lafiz:   {ad:"Söz ve Yorum", renk:"#5b4a8a"},
+  ictihad: {ad:"Nas ve İçtihad", renk:"#7a5a1e"},
+  zaruret: {ad:"Meşakkat ve Zaruret", renk:"#2e6b3f"},
+  zarar:   {ad:"Zarar", renk:"#a0412d"},
+  haram:   {ad:"Haramın Verilmesi ve Talebi", renk:"#6e2c4f"},
+  orf:     {ad:"Örf ve Âdet", renk:"#3d6a8a"},
+  tabi:    {ad:"Asıl, Fer ve Tâbi", renk:"#6a6a2a"},
+  velayet: {ad:"Teberru, Maslahat ve Velâyet", renk:"#4c6b5a"},
+  ispat:   {ad:"Delil ve İspat", renk:"#344a7a"},
+  sart:    {ad:"Şart ve Vaat", renk:"#8a5a2e"},
+  tazmin:  {ad:"Tazmin ve Sorumluluk", renk:"#7a2e2e"},
+  mulk:    {ad:"Mülkiyet ve Hakların Korunması", renk:"#3e5e3e"}
+};
+
+const GIRIS = {
+  kavramlar: [
+    ["Mecelle", "“Hikmetli sözlerin yazılı olduğu sayfa veya kitap” demektir. Osmanlı’da hazırlanan ilk medeni kanunun adıdır."],
+    ["Küllî Kâide", "Cüzî konuların çoğunun hükmünü ihtiva eden kurallar bütünüdür. Kısaca genel hukuk prensipleridir.", "حكم أغلبي ينطبق على معظم جزئياته لتعرف أحكامها منه"],
+    ["Dâbıta", "Kâideden daha dar kapsamlıdır. Sadece bir bölümle ilgili detaylara dair hüküm ifade eden kurallardır."],
+    ["Eşbâh ve’n-Nezâir", "Zahiren birbirine benzeyen, fakat fakihlerin dikkatlice baktığında anlayabileceği gizli sebeplerden dolayı hükümleri farklı olan konulardır."],
+    ["Usûl-i Fıkıh Kâideleri", "Tafsîlî delillerden fer‘î şer‘î hükümleri istinbat etmeye götüren küllî hükümlerdir."]
+  ],
+  onem: [
+    "Bütün teferruatı öğrenmek zordur. Çoğu fer‘î konuyu kapsayan küllî kâideleri bilmek, kişiye anlama ve çözümlemede yardımcı olur.",
+    "Fıkıh melekesini ve kıyas yeteneğini geliştirir.",
+    "Çok sayıdaki meseleyi bir kâide altında toplama kolaylığı sağlar.",
+    "Usûl ile fürû arasındaki irtibatı sağlar.",
+    "Fıkıh öğrenmeyi kolaylaştırır.",
+    "Fıkhın delillerini genel itibarıyla öğrenmeyi sağlar."
+  ],
+  farklar: [
+    ["Şer‘î tafsîlî ve fer‘î delillerden oluşturulmuştur.", "İcmâlî delillerden oluşturulmuştur."],
+    ["Mükellefin fiilleri ile ilgilidir.", "Şer‘î icmâlî delillerle ilgilidir."],
+    ["Herkes yararlanabilir.", "Müçtehitler yararlanır."],
+    ["Bunlardan hüküm çıkarmak için usûl kâidelerini bilmek gerekir.", "Bunun aksi geçerli değildir."],
+    ["Ağlebîdir, istisnaları vardır.", "Küllîdir, istisnası yoktur."],
+    ["—", "Fer‘î meselelerde mukaddem delildir."]
+  ],
+  serhler: [
+    ["Dürerü’l-Hükkâm", "Ali Haydar Efendi"],
+    ["Rûhu’l-Mecelle", "Hacı Reşid Paşa"],
+    ["Mir’ât-ı Mecelle", "Mesud Efendi"],
+    ["Mir’ât-ı Mecelle", "Yusuf Âsaf"],
+    ["Şerhu’l-Mecelle", "Selim Rüstem Baz"]
+  ],
+  kaynaklar: ["Âyet-i kerîmeler", "Hadîs-i şerîfler", "Sahâbenin sözleri", "Tâbiînden rivayet edilen sözler", "İmam Muhammed’in kitaplarındaki kâideler"],
+  notlar: [
+    "Kâide konusunda müstakil olarak ilk eser veren Ebû Tâhir ed-Debbâs’tır (17 madde).",
+    "Kerhî 36 madde oluşturmuştur.",
+    "İbn Nüceym ise sayıyı 100 maddeye çıkarmıştır."
+  ]
+};
+
+const KAIDELER = [
+{n:1, tema:"tanim", ar:"الفقه: علم بالمسائل الشرعية العملية المكتسبة من أدلتها التفصيلية",
+ tr:"İlm-i fıkıh, mesâil-i şer‘iyye-i ameliyyeyi bilmektir.",
+ acik:["Fıkıh; amelî (uygulamaya dönük) şer‘î meseleleri, tafsîlî delillerinden elde edilmiş olarak bilmektir.", "Mecelle’nin ilk maddesi bir kâide değil, fıkıh ilminin tanımıdır; asıl küllî kâideler 2. maddeden başlar."],
+ ornek:[], istisna:[], ilgili:[]},
+
+{n:2, tema:"niyet", ar:"الأمور بمقاصدها", tr:"Bir işten maksat ne ise hüküm ona göredir.",
+ acik:["Mutlak olarak işin görünüşü, yapılışı değil; niyet itibara alınır.", "Dayanağı «إنما الأعمال بالنيات» (Ameller niyetlere göredir) hadisidir.", "Fiil, kasıt ile birleşirse bu kâidenin altına girer.", "Zahirî bir fiil ile birleşmemiş niyet üzerine şer‘î hüküm terettüp etmez."],
+ ornek:["Bir kişi karısını yalnızca kalben boşasa veya atını hiçbir şey söylemeden kalben satsa, bunun üzerine herhangi bir hüküm terettüp etmez.", "Emaneti alan kişi teaddide bulunsa, sonra haksız fiili ortadan kaldırsa bakılır: Bir daha yapmak niyetiyle kaldırdıysa o sırada teaddi olmaksızın oluşacak helâki tazmin eder; bir daha yapmama niyetindeyse tazmin etmez (garajdaki araba örneği).", "Bir kişi ağı ipe astıktan sonra ağa kuş takılsa bakılır: Ağı kurutmak için astıysa kuş onun değildir; av için astıysa kuş onundur.", "Lukata (buluntu mal) bulan kişi, onu temellük kastıyla aldıysa elinde kusur veya teaddi olmasa bile tazmin eder, çünkü gâsıp hükmündedir. Sahibine teslim etmek maksadıyla aldıysa tazmin etmez; emanet hükmündedir.", "Bir kişi, muzâri sîgasıyla bir malı satmaya kalksa, muzâriden ne kastettiği sorgulanır; hâli kastederse satış gerçekleşir."],
+ istisna:[],
+ not:["Kasıt ve niyetin farklı olmasıyla hükmü değişmeyen şer‘î hükümler de vardır. Mesela bir kişi izni olmadığı halde bir şey yapsa ya da şaka yollu arkadaşının telefonunu saklasa ve iradesi olmadan bile malın başına bir şey gelse, bu zararı tazmin eder."],
+ tablo:{baslik:"Niyet Açısından Fiiller", kolonlar:[
+   {b:"Sarîh", m:["Sarîh ifadeler herhangi bir niyete ihtiyaç duymaz.", "Hüküm bu sarîh ifade üzerine terettüp eder.", "Bir adam başkasına malını “sana sattım (بعت)” dese, içindeki niyete bakılmaz; satış akdi gerçekleşir.", "İkrar, vekâlet, vedîa, âriyet, kazf ve sirkat de böyledir."]},
+   {b:"Gayr-i Sarîh", m:["Söyleyen veya fiili yapan kişinin niyeti sorgulanmaksızın anlaşılmaz.", "Niyet açığa çıktıktan sonra hüküm ona göre terettüp eder."]}]},
+ ilgili:[3,68]},
+
+{n:3, tema:"niyet", ar:"العبرة في العقود للمقاصد والمعاني لا للألفاظ والمباني",
+ tr:"Akitlerde itibar maksat ve mânâyadır; lafızlara ve sözün yapısına değildir.",
+ acik:["Dayanağı «إنما الأعمال بالنيات» hadisidir.", "Bu kâide, karine bulunduğu sürece geçerlidir.", "Hüküm, âkidlerin akit sırasında kullandığı lafızların dış kalıbına göre değil, ağızlarından çıkan sözlerin hakiki mânâlarına göre terettüp eder."],
+ ornek:["Bey‘u’l-vefâ: “Evimi sana 300 bine sattım, ama 300 bini getirince evi bana geri satacaksın.” Bu akit rehin hükmündedir.", "Bir kişi başkasına “Bu atı sana 100 bine hibe ettim” dese, akit satış (bey‘) olarak gerçekleşir.", "Bir kişi bakkaldan şeker alsa ve “Şu saati para getirene kadar emanet olarak al” dese bu emanet geçerli değildir; rehin hükmündedir.", "“Küçükçekmece’ye kadar binmen için bu atı sana 50 liraya âriyet verdim” dese âriyet olmaz; icâre hükmündedir."],
+ istisna:["Bir kişi bir şeyi parasız satsa bu satış bâtıl olur; hibeye dönüşmez.", "Bir kişi parasız kiraya verse bu icâre fâsit olur; âriyete dönüşmez.", "Gerekçesi: Bey‘ ve icâre asıl (güçlü) olduğu için, onlara nispetle fer (zayıf) olan hibe ve âriyete dönüşmez."],
+ ilgili:[2]},
+
+{n:4, tema:"yakin", ar:"اليقين لا يزول بالشك", tr:"Şek ile yakîn (kesin bilgi) zâil olmaz.",
+ acik:["Şek: Bir işin olması ile olmaması arasında tereddüt etme durumudur. Birini diğerine tercih sebebi olmadığından iki ihtimalden biri tercih edilemez.", "Yakîn: Bir şeyin olmasına veya olmamasına kesin bilgi ya da zann-ı gâlip ile ulaşmak (hüküm vermek)."],
+ ornek:["Mefkûd: Kişi sefere çıksa, uzun müddet haber alınamasa ve öldüğü mü kaldığı mı belli olmasa, önceden yaşadığı kesin olduğu için hayatının devamına hükmedilir; malları mirasa konu olmaz.", "Bir kişi “Galiba zimmetimde şu kadar borcum var” diyerek başkası lehine ikrarda bulunsa bu geçerli olmaz; içinde şüphe barındırır. Hâlbuki yakîn (asıl) olan berâet-i zimmettir.", "Bakirelik asıldır. Gece asıldır: Güneşin batışında şüphe varsa oruç devam eder.", "Abdestin bozulup bozulmadığında şüpheye düşmek."],
+ istisna:["Seferî olan kişi, mukim olmaya niyet edip etmediğinden şüphe ederse sefer ruhsatlarını kullanamaz; çünkü ibadette ihtiyat asıldır."],
+ olcek:true, ilgili:[5,10,74]},
+
+{n:5, tema:"yakin", ar:"الأصل بقاء ما كان على ما كان", tr:"Bir şeyin bulunduğu hal üzere kalması asıldır.",
+ acik:["İstishâb: Bir şeyin herhangi bir vakitte gerçekleşmiş olmasına binaen sübut ve tahakkukuna hükmetmektir.", "İstishâb dâfi‘dir, müsbit değildir.", "Bu kâide, aksine delil olmadığı sürece geçerlidir."],
+ ornek:["İki şahıs, birinin evinden diğerinin evine akan su yolu (mesîl) konusunda mahkemeye gitse hâkim şimdiki duruma bakar; şu an su akıyorsa geçmişte de aktığına hükmeder.", "Bir kişi değirmen kiralasa, kira süresi bittikten sonra suyun kesilip durduğunu söyleyip indirim istese hâkim bakar: Su şu an akıyorsa geçmişte de akıyordu, indirim olmaz; aksi halde indirime gidilir.", "Baba, oğlu ortada yokken onun malından harcasa; oğul babasının o sırada zengin olduğunu, dolayısıyla böyle bir hakkı olmadığını söylese hâkim şimdiki duruma bakar: Baba fakirse söz yeminle babanın, zenginse yeminle oğlunundur.", "Borçlu borcunu verdiğini söylese, alacaklı inkâr etse söz yeminle alacaklınındır; çünkü geçmişte borç olduğu kesindir.", "Mefkûd örneği: Hayatta olduğu bilinen kayıp kişinin hayatının devamına hükmedilir."],
+ istisna:["Emanetçi emaneti verdiğini ya da taksir veya kasıt olmaksızın malın telef olduğunu söylese söz yeminle onundur. Hâlbuki geçmişe bakarak emanetin hâlâ onda olduğuna hükmetmek gerekirdi; fakat emanette güvenilirlik esastır, hâkim de eminin sözüne güvenir."],
+ tablo:{baslik:"İstishâbın Türleri (الاستصحاب)", kolonlar:[
+   {b:"استصحاب الحال بالماضي", m:["Hâlihazırda mevcut olan durumun geçmişte de var olduğuna hükmetmek.", "Diğer adı «تحكيم الحال»dir.", "Örnekler: su yolu (mesîl), değirmen kirası, babanın oğlunun malından harcaması."]},
+   {b:"استصحاب الماضي بالحال", m:["Geçmişte var olan hadisenin değiştiğine dair delil olmadığı sürece hâlihazırda da var olduğuna hükmetmek.", "Örnekler: mefkûd; borcunu ödediğini söyleyen borçlu."]}]},
+ ilgili:[4,10,8]},
+
+{n:6, tema:"yakin", ar:"القديم يترك على قدمه", tr:"Eskiden beri var olan, eskiden olduğu gibi bırakılır.",
+ acik:["Kadîm: Evveli belli olmayan; başlangıcını yaşayanlardan kimsenin bilmediği gelenek ve uygulamalardır.", "Genellikle irtifak haklarının uygulamalarına yönelik bir kâidedir; irtifak hakları olduğu gibi bırakılır.", "«ما لم يكن هناك ضرر» (orada bir zarar olmadıkça) kaydı bu kâidenin şartıdır; zarar olmadığı müddetçe kâide uygulanır."],
+ ornek:["Bir kimsenin oluğu eskiden beri diğer şahsın evinin üzerinden akıyorsa, ev sahibi bu hakkı engelleyemez.", "Kanalizasyon meselesi de aynı şekildedir.", "Vakıf olduğu bilinen fakat vakfiyesi ve vakıf şartı tespit edilemeyen bir vakfın geliri öteden beri nereye ve nasıl sarf ediliyorsa, öylece dokunulmadan devam eder."],
+ istisna:[], ilgili:[7]},
+
+{n:7, tema:"yakin", ar:"الضرر لا يكون قديما", tr:"Zarar kadîm olamaz.",
+ acik:["Yani zararın eskiden beri var olması itibara alınmaz; eski olması onu meşru kılmaz."],
+ ornek:["Şehrin uzağındaki deri fabrikaları, şehir oraya uzanıp koku yapmaya başladığında kaldırılır.", "Sokak arasındaki pazarlar trafiğe engel olursa kaldırılır."],
+ istisna:[], ilgili:[6,20]},
+
+{n:8, tema:"yakin", ar:"الأصل براءة الذمة", tr:"Zimmetin berî (borçsuz) olması asıldır.",
+ acik:["İnsan aslen her türlü borç ve sorumluluktan hâlîdir.", "Zimmet: Kişinin lehine veya aleyhine olan hak ve borçlara ehil olmasını ifade eden vasıftır."],
+ ornek:["Borçlu ile alacaklı borç miktarında ihtilaf ederse borçlunun sözüne bakılır; çünkü borçluluk durumunda da asıl olan borcun az olmasıdır."],
+ istisna:[], ilgili:[4,77]},
+
+{n:9, tema:"yakin", ar:"الأصل في الصفات العارضة العدم", tr:"Ârızî sıfatlarda asıl olan yokluktur.",
+ acik:["Sonradan ortaya çıkan (ârızî) sıfatların var olduğu iddiası ispat ister; asıl olan bunların olmamasıdır.", "Muhayyerlik, hediye/hibe, delilik, suç işlemek gibi durumlar ârızîdir."],
+ ornek:["Mudârebe akdinde taraflar kâr olup olmadığında ihtilaf etse mudâribin sözü yeminle geçerlidir; çünkü mudârebe ve ticarette esas olan kârsızlıktır.", "Bir şahıs at satın alıp teslim alsa, sonra kadîm bir ayıp iddia etse, satıcı ise atın kusursuz olduğunu söylese söz yeminle satıcınındır; çünkü kusurlu olmak ârızîdir.", "Bir kimse inek satsa, müşteri ineğin sağmal (bol sütlü) olmadığı iddiasıyla geri vermek istese söz satıcınındır; çünkü ineğin normal sütlü olması esastır, sağmal olması ârızî bir vasıftır.", "Satıcı ile müşteri veya kiralayan ile kiracı, malın teslimi konusunda ihtilaf etse söz yeminle teslimi inkâr edenindir; çünkü bey‘ icap ve kabuldür, teslim sonradan olur, yani ârızîdir.", "Yazı yazdırmak için köle alınsa ve yazı bilmediği gerekçesiyle geri verilmek istense söz yeminle satıcınındır; çünkü insanda esas olan okuyup yazamamaktır."],
+ istisna:["Karı-koca, mehrin kocaya hibe edilmesi konusunda ihtilaf etse; kadın “Beni boşamaman şartıyla hibe etmiştim” dese, koca şartsız olduğunu iddia etse kadının sözüne itibar edilir. Hâlbuki hibede koşulan şart ârızîdir. Karı-koca ilişkisinde hibe, hul‘un tam tersi sayılır: Hul‘ boşanmak için, hibe ise boşanmamak için verilir.", "Hediye veren hediyesini geri almak istese, hediye edilen de “helâk oldu” dese, hediye edilenin sözüne itibar edilir. Hâlbuki helâk olmak ârızîdir."],
+ ilgili:[4,5]},
+
+{n:10, tema:"yakin", ar:"ما ثبت بزمان يحكم ببقائه ما لم يوجد المزيل", tr:"Bir zamanda sabit olan şeyin, onu gideren bir delil bulunmadıkça devamına hükmolunur.",
+ acik:["Bu madde, 5. madde (الأصل بقاء ما كان على ما كان) ile aynı anlamdadır; istishâb ilkesinin farklı bir ifadesidir."],
+ ornek:[], istisna:[], ilgili:[5,4]},
+
+{n:11, tema:"yakin", ar:"الأصل إضافة الحادث إلى أقرب أوقاته", tr:"Sonradan olan bir şeyin en yakın zamanına izafe edilmesi asıldır.",
+ acik:["Bir olayın ne zaman meydana geldiğinde ihtilaf edilirse, en yakın vakitte meydana geldiği kabul edilir."],
+ ornek:["Kadın kocasının kendisini ölüm hastalığında (talâku’l-fâr) boşadığını söyleyip miras talep etse, mirasçılar ise sıhhatliyken boşadığını söylese söz yeminle kadınındır; çünkü en yakın zamana bakıldığında boşama ölüme daha yakındır.", "Muhayyer müşteri, hıyâr müddeti içinde akdin feshedildiğini söylese, satıcı ise müddet bittikten sonra feshedildiğini söylese, fesih en yakın zamana izafe edilir ve müddet sonrası olduğu iddiası kabul edilir; fesih muteber değildir.", "Baba çocuğun malını satsa, çocuk ise babasının malı kendisi bulûğa erdikten sonra sattığını söylese satış sahih değildir; çünkü bulûğdan sonrası en yakın zamandır."],
+ istisna:[], ilgili:[5]},
+
+{n:12, tema:"lafiz", ar:"الأصل في الكلام الحقيقة", tr:"Kelâmda asıl olan hakiki mânâdır.",
+ acik:["Bir kelamda hakiki ve mecazi mânâ aynı anda alınamaz.", "Umûmu’l-mecâz (عموم المجاز): Lafzın, hakiki ve mecazi mânaların hepsini kapsayan bir mânâda kullanılmasıdır.", "«ل» (lâm) harfi hem mülkiyeti hem de menfaati kapsar: «هذه الدار لزيد» denildiğinde Zeyd hem evin mülkiyetine hem de orada oturma hakkına sahiptir."],
+ ornek:["Kişi “evlatlarıma” diyerek vakfetse, bu sadece kendi çocukları için geçerli olur; torunlarını veya torunun çocuklarını kapsamaz.", "“Aslanı öldürme” sözünde ‘aslan’ kelimesi hem hakiki hem mecazi mânada alınamaz.", "Kişi “Malımı nesilden nesile çocuklarıma vakfettim” dese, hem hakiki olarak çocuklarına hem de ‘nesilden nesile’ karinesiyle mecazi olarak torunlarına geçer."],
+ istisna:["Sözü hakikate hamletmek mümkün değilse mecaza hamledilir. Mesela bir kişi “Evde aslan gördüm” dese bu söz mecazi olarak ele alınır; çünkü normal şartlarda evde aslan olmaz."],
+ ilgili:[61,60,40]},
+
+{n:13, tema:"lafiz", ar:"لا عبرة للدلالة في مقابلة التصريح", tr:"Açık ifade (tasrîh) karşısında delâlete itibar yoktur.",
+ acik:["‘Delâlet’ yerine ‘örf ve âdet’ de konulabilir.", "Delâlete dayalı hüküm sabit olduktan sonra sonradan gelen sarahate de itibar edilmez."],
+ ornek:["Kırmızı ışıkta durmak gerekir; fakat orada trafik polisi “geç” diyorsa kırmızı ışığa itibar edilmez.", "Cep telefonu alırken satıcı açıkça “garanti yok” diyorsa, örfe göre garanti olmasına itibar edilmez.", "Arkadaşının evine izinle giren kişi masadaki bardaktan su içerken bardak kırılsa tazmin gerekmez; fakat arkadaşı “bu bardaktan içme” dediği halde içer ve kırılırsa tazmin eder.", "Bir kişi malını hibe etse ve arkadaşı kabul etse, malı kabzetme izni delâlet yoluyla vardır; fakat hibe eden kabızdan önce “alma” derse artık hibe bâtıl olur.", "Satıcı müşteriye “Bu telefonu 5 bine al” dese, müşteri başka işle meşgul olup cevap vermese delâleten alışverişi reddetmiş olur; sonradan “tamam aldım” diyerek sarahaten belirtse bile geçerli değildir.", "Fuzûlî biri başkasının malını satsa, mal sahibi “parasını ver” dese, sonra “sarahaten onayladım demedim” diyerek onaylamadığını söylese bu kabul edilmez."],
+ istisna:[], ilgili:[36,45,67]},
+
+{n:14, tema:"ictihad", ar:"لا مساغ للاجتهاد في مورد النص", tr:"Nassın bulunduğu yerde içtihada imkân yoktur.",
+ acik:["Buradaki nas; müfesser, muhkem ve icmâyı da kapsar.", "Nas, bulunulan konuma göre değişkenlik gösterir: İmam-ı Âzam’a göre âyet ve hadis; ashâb-ı tahrîce göre İmâmeyn ve Ebû Hanîfe’nin görüşleri; günümüzdeki hâkimlere göre kanunlardır."],
+ ornek:["«البينة على من ادعى واليمين على من أنكر» hadisi varken bir müçtehit “inkâr edene yemin yoktur” diyemez.", "«أحل الله البيع وحرم الربا» âyeti varken müçtehit “bey‘ helal mi haram mı?” diye içtihat edemez."],
+ istisna:[], not:["Nasları anlamaya yönelik içtihatlar kâidenin dışındadır."], ilgili:[15,16]},
+
+{n:15, tema:"ictihad", ar:"ما ثبت على خلاف القياس فغيره عليه لا يقاس", tr:"Kıyasa aykırı olarak sabit olan hükme başka bir şey kıyas edilmez.",
+ acik:["Kıyasın aksine verilmiş bir hüküm, başka bir şey için makîsun aleyh (asıl) olamaz.", "İstihsanen cevaz verilen bir şeye başka bir şey kıyas edilmez."],
+ ornek:["Selem akdi, ma‘dûmun satışıdır; “hayvanın karnındaki yavru da ma‘dûmdur” denilerek onun satışına cevaz verilmez.", "Vasiyet kıyasa aykırıdır, çünkü ölümden sonra kişinin malı onun değildir; ama maslahata binaen caizdir. Buradan yola çıkarak ölümden sonraya bağlı alım-satım akitlerini vasiyete kıyas etmek caiz değildir.", "Oruçluyken unutarak yemek-içmek, nassa dayalı istihsan olduğu için orucu bozmaz; fakat namazdaki yeme-içme buna kıyas edilemez.", "Olağanüstü hal sebebiyle kurulan mahkemelerin (DGM vb.) kararları, normal mahkemelerdeki kararlara emsal olamaz."],
+ istisna:[], ilgili:[14,17]},
+
+{n:16, tema:"ictihad", ar:"الاجتهاد لا ينقض بمثله", tr:"İçtihat, kendisi gibi bir içtihatla nakzedilmez.",
+ acik:["Bir müçtehidin önceden verdiği hüküm, yeni verdiği hükümle bozulmaz.", "Hâkimin usule uygun verdiği bir hükmü başka bir hâkim gerekçesiz bozamaz."],
+ ornek:["Kişi araştırarak kıbleyi tayin edip namaz kılsa, sonra yanıldığını tespit etse namazı iade etmesi gerekmez."],
+ istisna:[], not:["Halkın maslahatı söz konusu olduğunda içtihat bazen içtihadı nakzedebilir."], ilgili:[14,72,80]},
+
+{n:17, tema:"zaruret", ar:"المشقة تجلب التيسير", tr:"Meşakkat, kolaylığı celbeder.",
+ acik:["Meşakkat, kolaylığın uygulanmasına bir sebeptir.", "Bütün ruhsat türleri bu maddenin kapsamına girer.", "Hîle-i şer‘iyye olarak da adlandırılan bey‘ bi’l-vefâ, müzâraa, müsâkât, selem, icâre, âriyet ve mudârebe gibi İslâm hukukunda kıyasa aykırı olarak cevaz verilen pek çok muamele, insan hayatındaki sıkıntıları (hâciyyât) kaldırmak için meşru kılınmıştır."],
+ ornek:["Selem akdinin olmaması insanların ihtiyacı bakımından meşakkattir; dolayısıyla seleme cevaz verilmiştir."],
+ istisna:["Bir şeyin meşakkat olduğunda dahi yapılamayacağına dair açık bir nas varsa, o şey asla yapılamaz. Mesela öldürülmekle tehdit edilen bir kimse meşakkatten dolayı da olsa başkasını öldüremez; öldürürse tehdit edene ceza verilir."],
+ ilgili:[18,21,32]},
+
+{n:18, tema:"zaruret", ar:"الأمر إذا ضاق اتسع (وإذا اتسع ضاق)", tr:"Bir iş daraldığında genişler (genişlediğinde ise daralır).",
+ acik:["Bir durum dar olursa (zorluk) genişler (kolaylaşır).", "Şer‘î bir hükmün yerine getirilmesinde bir zorluk arız olduğunda ruhsatla amel edilmesi ve genel kâidelere bağlı kalınmaması caiz olur."],
+ ornek:["Ölüm tehlikesi söz konusu olduğunda kişi domuz eti yiyebilir; fakat tehlike ortadan kalkınca hüküm tekrar daralır ve harama döner.", "Şahitliğin nisabı iki erkektir; fakat doğum gibi sadece kadınların muttali olabileceği durumlarda tek kadının şahitliği de geçerlidir."],
+ istisna:[], ilgili:[17,23]},
+
+{n:19, tema:"zarar", ar:"لا ضرر ولا ضرار", tr:"Zarar vermek ve zarara zararla karşılık vermek yoktur.",
+ acik:["Mubah fiiller ancak başkasına zarar vermiyorsa geçerlidir.", "«أن جواز إجراء الأفعال المباحة مشروط بعدم ترتب ضرر لأحد بإجرائها»: Mubah fiillerin yapılmasının caizliği, bunların yapılmasıyla kimseye zarar doğmamasına bağlıdır."],
+ ornek:["Sahte para.", "Camide ayakkabının çalınması.", "Komşusunun bahçesine bakan pencere açmak."],
+ istisna:[], ilgili:[20,25]},
+
+{n:20, tema:"zarar", ar:"الضرر يزال", tr:"Zarar izâle olunur (giderilir).",
+ acik:["Meydana gelen zarar ortadan kaldırılır veya telafi edilir."],
+ ornek:["Bahçesindeki ağacın dalları yola uzanmış ve insanlar kafasını kolunu çarpıyorsa, ağacın dalları kesilir.", "Mal gasbedilse ve sonra telef olsa, bu zarar gâsıptan tazmin edilir.", "Borç verme konusunda enflasyon farkının giderilmesi evlâdır."],
+ istisna:[], ilgili:[19,25,31,7]},
+
+{n:21, tema:"zaruret", ar:"الضرورات تبيح المحظورات", tr:"Zaruretler, memnu olan şeyleri mubah kılar.",
+ acik:["Zaruri durumlar yasak olan şeyleri mubah hale getirir."],
+ ornek:["A kişisi B’yi, C’nin malını itlaf etmeye zorlasa (ikrah) ve B de itlaf etse hukuken ve diyaneten sorumlu olmaz; fakat malı tazmin eder."],
+ istisna:["Her yasak, zaruret anında mubah olmaz: Birini öldürmek ve zina gibi."],
+ ilgili:[22,17,33]},
+
+{n:22, tema:"zaruret", ar:"الضرورات تقدر بقدرها", tr:"Zaruretler kendi miktarlarınca takdir olunur.",
+ acik:["Zaruret, ancak miktarı ölçüsünde mubah olur; zaruretle mubah olan şey ihtiyaç kadarıyla sınırlıdır."],
+ ornek:["Doktor tedavi ederken avret mahallini ancak ihtiyaç miktarı kadar açması mubah olur."],
+ istisna:[], ilgili:[21,23]},
+
+{n:23, tema:"zaruret", ar:"ما جاز لعذر بطل بزواله", tr:"Bir özür sebebiyle caiz olan şey, o özrün zevaliyle bâtıl olur.",
+ acik:["Özür sebebiyle caiz olan şeyin cevazı, özrün ortadan kalkmasıyla sona erer."],
+ ornek:["Su bulunursa teyemmüm bâtıl olur.", "Şahitlik üzerine şahitlik: Asıl şahit gelirse fer‘î şahit şahitlik edemez."],
+ istisna:[], ilgili:[24,22,18]},
+
+{n:24, tema:"zaruret", ar:"إذا زال المانع عاد الممنوع", tr:"Mâni zâil olunca memnu avdet eder.",
+ acik:["Ârızî bir mâni sebebiyle askıya alınan hüküm, mâninin gitmesiyle eski haline döner."],
+ ornek:["Mâni olan hayız sona erince namazın vücubu geri gelir.", "Mâni olan ihramdan çıkılınca, yasaklanan şeyler (cimâ, traş olmak gibi) yeniden mubah hale döner."],
+ istisna:[], ilgili:[23,46]},
+
+{n:25, tema:"zarar", ar:"الضرر لا يزال بمثله", tr:"Zarar, kendi misliyle izâle olunmaz.",
+ acik:["Bir zarar, benzeri bir zarar meydana getirilerek giderilemez."],
+ ornek:["Caddede iki berber dükkânı olsa, tam karşılarına bir berber dükkânı daha açılmasına engel olunamaz.", "A ve B ölümle burun buruna olsa ve A’nın yalnızca kendisini ölümden kurtaracak kadar yiyeceği olsa, B, A’nın yiyeceğini alamaz."],
+ istisna:[], ilgili:[20,27,33]},
+
+{n:26, tema:"zarar", ar:"يتحمل الضرر الخاص لدفع ضرر عام", tr:"Zarar-ı âmmı def için zarar-ı hâs ihtiyar olunur.",
+ acik:["Kamunun zararını gidermek için şahısların zararına katlanılır."],
+ ornek:["Dumanı veya kokusuyla diğer esnafa ya da oturanlara zarar veren işletmelere (dericiler, demirciler; kumaşçılar çarşısında açılmak istenen yemek fabrikası vb.) mâni olunur.", "İhtikâr yapanların mallarının zorla satılması da bu kapsamdadır."],
+ istisna:[], ilgili:[27,28,58]},
+
+{n:27, tema:"zarar", ar:"الضرر الأشد يزال بالضرر الأخف", tr:"Daha şiddetli zarar, daha hafif zararla izâle olunur.",
+ acik:["Zararı büyük olan bir durum, daha hafif bir zarar tercih edilerek giderilir."],
+ ornek:["10 bin TL değerindeki atın başı 1000 TL’lik tencereye sıkışsa ve tek kurtuluş tencereyi kırmak olsa bu yapılır; fakat tencerenin zararı tazmin edilir.", "Tavuk bir inci yutsa, tavuk sahibinden satın alınır ve kesilir."],
+ istisna:[], ilgili:[28,29,26]},
+
+{n:28, tema:"zarar", ar:"إذا تعارض مفسدتان روعي أعظمهما ضررا بارتكاب أخفهما", tr:"İki mefsedet çatışırsa, hafif olanı irtikâp edilerek büyük olanından korunulur.",
+ acik:["İki zarar bir araya geldiğinde, daha az olanı yapılarak daha büyük zararın önüne geçilir."],
+ ornek:["Zalim yöneticiye karşı ayaklanmak daha kötü sonuçlar doğuracaksa zalimin zulmüne katlanılır.", "Sokakta elinde bıçakla gasp yapan adama cüzdanı vermek, daha büyük zarar olan yaralanmaktan veya ölmekten kurtarır.", "Yüzme bilmeyen kişi gemideyken yangın çıksa, kendisine göre hangi ölüm daha az acı verecekse onu tercih eder: ya yanar ya da atlayıp boğulur."],
+ istisna:[], ilgili:[29,27]},
+
+{n:29, tema:"zarar", ar:"يختار أهون الشرين", tr:"Ehven-i şerreyn ihtiyar olunur.",
+ acik:["İki kötüden daha az kötü olanı tercih edilir.", "Bu maddenin örnekleri 28. maddenin örnekleridir."],
+ ornek:[], istisna:[], ilgili:[28,27]},
+
+{n:30, tema:"zarar", ar:"درء المفاسد أولى من جلب المنافع", tr:"Def‘-i mefâsid, celb-i menâfiden evlâdır.",
+ acik:["Kötülüğü def etmek, faydalı bir şeyi elde etmekten önce gelir."],
+ ornek:["Kadına gusül vacip olsa, fakat erkeklerin görmesine mâni olacak bir örtü veya mekân bulamazsa guslünü tehir eder.", "İçki, kumar, uyuşturucu ve domuz satışı kârlı bir ticaret olsa da yasaklanır; çünkü mefsedeti def etmek faydasından evlâdır."],
+ istisna:["Yalan büyük bir günahtır; ancak dargınların arasını düzeltmek veya savaşta hile olarak söylenmesi caiz görülmüştür."],
+ ilgili:[28,19]},
+
+{n:31, tema:"zarar", ar:"الضرر يدفع بقدر الإمكان", tr:"Zarar, imkân miktarı def olunur.",
+ acik:["Zarar, imkân dâhilinde giderilir; tamamen giderilemiyorsa mümkün olan ölçüde giderilir."],
+ ornek:["Hırsız tüketilebilen bir malı çalsa; malın aynını vermek mümkünse o verilir, değilse mislî ise misli, kıyemî ise kıymeti ödenir.", "Müşterinin elinde malda yeni bir ayıp meydana gelse, sonra kadîm bir ayıp daha tespit edilse mal geri verilmez; fakat kadîm ayıbın kıymeti tazmin edilir."],
+ istisna:[], ilgili:[20,53]},
+
+{n:32, tema:"zaruret", ar:"الحاجة تنزل منزلة الضرورة عامة أو خاصة", tr:"İhtiyaç, umumi olsun hususi olsun, zaruret menzilesine konulur.",
+ acik:["Genel veya özel ihtiyaç, zaruret derecesinde kabul edilip ona göre hüküm verilir."],
+ ornek:["Bey‘ bi’l-vefâ (faizden kaçış ihtiyacı için)."],
+ istisna:[], ilgili:[17,21]},
+
+{n:33, tema:"zaruret", ar:"الاضطرار لا يبطل حق الغير", tr:"Iztırar, başkasının hakkını iptal etmez.",
+ acik:["Zorunlu bir durum, bir yasağı mubah kılsa bile başkasının hakkını ortadan kaldırmaz; bedel ödenir."],
+ ornek:["Kamulaştırma ile kişinin evinin olduğu yerden yol geçmesi gerekirse ev yıkılır; fakat evin kıymetini devlet tazmin eder.", "Kiralanan tarlada meyveler olgunlaşmadan kira süresi bitse süre uzatılır ve karşılığında ecr-i misil ödenir.", "Mükrehin (zorlananın) başkasının malını telef etmesi mubahtır; fakat mükrih (zorlayan) tazmin eder."],
+ istisna:[], ilgili:[21,25]},
+
+{n:34, tema:"haram", ar:"ما حرم أخذه حرم إعطاؤه", tr:"Alınması haram olan şeyin verilmesi de haramdır.",
+ acik:["Haram olan bir şeyi almak ile vermek aynı hükme tabidir; veren de harama yardım etmiş olur."],
+ ornek:["Faiz almak haramdır; dolayısıyla vermek de haramdır.", "Rüşvet almak ve vermek.", "Bir günlük yiyeceği olan kimsenin dilenmesi haramdır; böyle birine para vermek de haramdır.", "Başkasının mahremiyle flört etmek ve kendi kızına flört için müsaade etmek haramdır."],
+ istisna:["Gâsıp malı gasbetse, mal sahibinin gâsıba bu maldan pay verme hakkı vardır. Gâsıbın bunu alması haram olsa da kişinin malını geri alabilmek için ona pay vermesi caizdir.", "Kişi hakkını veya kıymetli bir mülkünü ancak rüşvet vererek alabiliyorsa, hâkime veya hakkını engelleyen kimseye rüşvet vermesi caizdir."],
+ ilgili:[35]},
+
+{n:35, tema:"haram", ar:"ما حرم فعله حرم طلبه", tr:"Yapılması haram olan şeyin talep edilmesi de haramdır.",
+ acik:["Haram bir fiili yapmak gibi, başkasından onu istemek de haramdır."],
+ ornek:["Şarap içmek haramdır; istemek de haramdır.", "Hainlik ve yalan yere şahitlik yapmak da, bunların yapılmasını istemek de haramdır.", "Had veya ta‘zir gerektiren bir fiili yapmak da başkasından talep etmek de haramdır."],
+ istisna:["Hâkim, yalan yere yemin edeceğini bildiği kişiden yine de yemin etmesini ister."],
+ ilgili:[34]},
+
+{n:36, tema:"orf", ar:"العادة محكمة", tr:"Âdet muhakkemdir (hakem kılınır).",
+ acik:["Âdet hakem tayin edilir; örf ve âdet hüküm vermede esas alınır.", "Nas varsa âdete bakılmaz.", "Açık ifade (sarahat) varsa da âdete itibar edilmez.", "İmam Ebû Yusuf’a göre, nas örfe göre bir hüküm verdiyse burada örfe başvurulur; yani örf değişirse hüküm de değişir (keylî–veznî meselesi)."],
+ ornek:["Düğündeki takılar, sarih bir ifade yoksa örfe göre taksim edilir.", "Cep telefonu satışında kılıfın verilip verilmeyeceği örfe göre belirlenir."],
+ istisna:[],
+ not:["Örf-i âmm ile hüküm-i âmm, örf-i hâs ile hüküm-i hâs sabit olur."],
+ tablo:{baslik:"Örfün Türleri", kolonlar:[
+   {b:"Örf-i Âmm", m:["Sahabeden beri değişmeyen, herkese göre örf olan kısımdır.", "Örnek: “Evine adımımı atmam.”"]},
+   {b:"Örf-i Hâs", m:["Belli bir ilmî veya meslekî grubun kullandığı terimlerdir.", "Örnek: “14-16” terimi."]},
+   {b:"Örf-i Şer‘î", m:["Şeriatteki ıstılahi anlamlardır.", "Örnek: صلاة، زكاة، حج"]}]},
+ ilgili:[37,43,45,13,14]},
+
+{n:37, tema:"orf", ar:"استعمال الناس حجة يجب العمل بها", tr:"İnsanların kullanımı, onunla amel edilmesi vacip olan bir hüccettir.",
+ acik:["İnsanlar arasındaki yaygın uygulama, bağlayıcı bir delil niteliğindedir."],
+ ornek:["Kişi başkasına “Bana ev al” dese ve o kişi evi alsa, aracının komisyon alıp almayacağı insanların kullanımına bağlı bir hükümdür.", "Komşuya tabakta yemek götürülse, komşu tabağı geri vermezlik yapamaz; çünkü insanların kullanımında hediye edilen şey yemektir, tabak değildir.", "İşçiye öğle yemeği vermek âdet olmuşsa, işin başında konuşulmasa bile işçiye öğle yemeği verilmesi gerekir."],
+ istisna:[], ilgili:[36,43]},
+
+{n:38, tema:"orf", ar:"الممتنع عادة كالممتنع حقيقة", tr:"Âdeten mümteni olan şey, hakikaten mümteni gibidir.",
+ acik:["Âdeten olması muhtemel olmayan bir şey, hakikatte de olmamış gibi kabul edilir."],
+ ornek:["Çok fakir biri mahkemeye gidip “10 trilyon alacağım var” dese itibar edilmez; çünkü böyle bir şeyin âdeten olmayacak olması hakikatte de olmadığı hükmünü gerektirir."],
+ istisna:["Ebû Yusuf’a göre yemin konusunda bu kural geçersizdir: Kişi “Vallahi şu bardaktaki suyu içeceğim” dese ve bardakta su bulunmasa yemini gerçekleşir (bozulur) ve günahkâr olur."],
+ ilgili:[36,62,82]},
+
+{n:39, tema:"orf", ar:"لا ينكر تغير الأحكام بتغير الأزمان", tr:"Ezmânın tağayyürü ile ahkâmın tağayyürü inkâr olunamaz.",
+ acik:["Zamanın değişmesiyle (örf ve âdete dayalı) hükümlerin değişebileceği inkâr edilemez.", "Had ve kısas gibi naslarla belirlenmiş hükümlerde bu kâide geçerli değildir."],
+ ornek:["Eskiden bir evde tek odayı görmek, odalar birbirinin aynı olduğu için hıyâr-ı rü’yeti düşürürdü; şimdi odalar farklı olduğu için bir odayı görmek hıyâr-ı rü’yeti düşürmez.", "Hz. Ömer’in kıtlık sebebiyle hırsızların el kesme cezasının ikinci bir emre kadar uygulanmaması yönündeki emri bu kâideye örnektir."],
+ istisna:[], ilgili:[36,14]},
+
+{n:40, tema:"orf", ar:"الحقيقة تترك بدلالة العادة", tr:"Âdetin delâletiyle hakiki mânâ terk olunur.",
+ acik:["Örfün dikkate alınmasıyla bazı sözlerin hakiki mânâsına itibar edilmez."],
+ ornek:["Bir kişi “düğün yemeği” almak için birini vekil kılsa, vekil ancak örfte yerleşmiş mutad yemeği alır; yenilebilecek her şeyi almaz.", "“Filancanın evine ayak basmayacağım” sözü, o kişinin evine girmemek mânâsındadır; ayağını içeri sokmamak şeklindeki hakiki mânâda değildir. Kişi elleri üstünde yürüyerek ya da bir hayvanın veya insanın sırtına binerek girse de yemini bozulur.", "“Lambayı yak” sözü “aç” demektir."],
+ istisna:[], ilgili:[12,61,36]},
+
+{n:41, tema:"orf", ar:"إنما تعتبر العادة إذا اطردت أو غلبت", tr:"Âdet ancak muttarid (sürekli) veya gâlib olduğunda muteberdir.",
+ acik:["Bir şey ancak sürekli devam ederse veya çoğunlukla yapılırsa âdet halini alır."],
+ ornek:["Bazı marketlerin müşteriye servis hizmeti sağlaması yaygınlık kazanmamıştır; dolayısıyla müşteri servis hizmeti vermediği için bir marketi şikâyet edemez.", "Bir satıcı yıllardır Türk lirasının örf olduğu bir yerde arsa ve evlerini lira ile satsa, sonra orada Fransız lirası yaygınlaşmaya başlasa, müşteri geriye dönük satışlar için “Bana Fransız lirası vermedin, satış geçersiz” diyemez."],
+ istisna:[], ilgili:[42,36]},
+
+{n:42, tema:"orf", ar:"العبرة للغالب الشائع لا للنادر", tr:"İtibar gâlib-i şâyiadır, nâdire değildir.",
+ acik:["Hükümde nadir olana değil, yaygın olana itibar edilir."],
+ ornek:["Mefkûdun ölümüne bu kâide kapsamında hükmedilir: Akranlarının çoğu öldüyse onun da öldüğüne hükmedilir.", "Kadınların hayızdan kesilme (iyâs) yaşının elli beş olarak belirlenmesi galibe göredir."],
+ istisna:["Yalın ayak sokaklarda dolaşan kimsenin ayağına necaset bulaşma ihtimali galip iken, görünürde bir necaset yoksa nadire itibarla namazı sahihtir."],
+ ilgili:[41,4]},
+
+{n:43, tema:"orf", ar:"المعروف عرفا كالمشروط شرطا", tr:"Örfen maruf olan şey, şart kılınmış gibidir.",
+ acik:["Örfte bilinen şey, açıkça şart koşulmuş gibi bağlayıcıdır."],
+ ornek:["Garantili satış; buzdolabı, çamaşır makinesi vb. aletlerin nakliye ve kurulumu.", "Hayvan satışında yularının, otomobil satışında anahtarın satışa dâhil olması."],
+ istisna:[], ilgili:[44,45,36,83]},
+
+{n:44, tema:"orf", ar:"المعروف بين التجار كالمشروط بينهم", tr:"Tüccar arasında maruf olan şey, aralarında şart kılınmış gibidir.",
+ acik:["Tüccarlar arasında bilinen bir şey dile getirilmese bile şart koşulmuş sayılır."],
+ ornek:["Elbise tüccarlarının âdeti ürünü imalatçıdan ütüsüz almaksa, buna itibar edilir."],
+ istisna:[], ilgili:[43,45]},
+
+{n:45, tema:"orf", ar:"التعيين بالعرف كالتعيين بالنص", tr:"Örf ile tayin, nas ile tayin gibidir.",
+ acik:["Örf ile belirlenmiş her şey, sözle belirlenmiş gibidir."],
+ ornek:["Arabasını bir haftalığına arkadaşına veren kişinin arkadaşı onunla araba yarışına katılamaz; örfen bilinir ki araba mutad bir ihtiyaç için istenmiştir.", "Kendisine mehir belirlenmemiş kadına, örfe göre mehr-i misil verilir."],
+ istisna:[], ilgili:[43,44,64]},
+
+{n:46, tema:"tabi", ar:"إذا تعارض المانع والمقتضي يقدم المانع", tr:"Mâni ile muktezî çatışırsa mâni takdim olunur.",
+ acik:["Bir şeyin yapılmasına engel olan ile yapılmasını gerektiren çatışırsa, mâni dikkate alınarak o şey yapılmaz.", "Mâninin muktezîden öncelikli olması için ikisinin de tek bir mahalde ve aynı hususta bulunması gerekir.", "Bu kâide ihtiyat ile alakalıdır."],
+ ornek:["Bir kimse, alacaklısının elinde rehin olarak bulunan malını başkasına satamaz. Malın sahibi olması dilediği gibi tasarrufu gerektirse (muktezî) de rehnedilmiş olması satışa mânidir.", "Nikâh cimâyı mümkün kılar; fakat koca hayızlı hanımına yaklaşamaz. Hayız mânidir.", "Mütekavvim ve gayr-i mütekavvim iki mal tek bir icapla satışa sunulsa, gayr-i mütekavvim mal satışın geçerliliğine mânidir."],
+ istisna:["Mâninin muktezîden daha kuvvetli olması gerekir; gerektiren (muktezî) daha kuvvetliyse engele itibar edilmez."],
+ ilgili:[24]},
+
+{n:47, tema:"tabi", ar:"التابع تابع", tr:"Tâbi, tâbidir.",
+ acik:["Varlıkta tâbi olan şey hükümde de tâbidir.", "Mevcudiyeti başkasına bağlı olan şeyin tek başına hükmü yoktur."],
+ ornek:["Hamile inek satılsa, söz konusu edilmese bile yavrusu da satışa dâhildir.", "Meyveler tarlaya tâbidir; bu yüzden müşterinindir.", "Bir kişi hamile ineği gasbetse ve inek yavrulasa, yavruyu da gasbetmiş olur."],
+ istisna:["Câriyenin karnındaki çocuk, câriye istisna edilerek azat edilebilir."],
+ ilgili:[48,49,54]},
+
+{n:48, tema:"tabi", ar:"التابع لا يفرد بالحكم", tr:"Tâbiye ayrıca hüküm verilmez.",
+ acik:["Tâbi olan şey, kendisine tâbi olunandan ayrı olarak müstakil bir hükme konu olmaz."],
+ ornek:["5 kırat elmas 1 milyona satılsa ve sonra 5,5 kırat çıksa, elmas bölünemeyeceğinden müşteriden ekstra para alınmaz.", "Satılan kılıcın kabzası da satışa dâhildir."],
+ istisna:["Bir kimse annesinin karnındaki cenin için mal ikrarında bulunsa, sağ doğması şartıyla cenin o mala mâlik olur. Burada ikrar, cenin hakkında annesinden ayrı olarak hüküm doğurmaktadır."],
+ ilgili:[47,49]},
+
+{n:49, tema:"tabi", ar:"من ملك شيئا ملك ما هو من ضروراته", tr:"Bir şeye mâlik olan, onun zaruri olan şeylerine de mâlik olur.",
+ acik:["Bir şeye sahip olan, onun zorunlu eklentilerine de sahip olur."],
+ ornek:["Bir akar satın alan kimse, o akara ait irtifak haklarına da sahip olur.", "Kilit satın alan anahtarı da hak eder; anahtarsız kilidin bir anlamı yoktur."],
+ istisna:[], ilgili:[47,48,43]},
+
+{n:50, tema:"tabi", ar:"إذا سقط الأصل سقط الفرع", tr:"Asıl sâkıt olunca fer de sâkıt olur.",
+ acik:["Asıl düşünce ona bağlı olan fer de düşer."],
+ ornek:["Alacaklı borcu asıl borçludan düşürürse kefilden de düşer.", "Müvekkil delirip ehliyetini yitirirse vekilin yetkisi de düşer."],
+ istisna:["Beytülmalde hakkı bulunan mücahit ve âlim ölürse bu hak çocuklarına verilir; burada “asıl öldü, fer de düştü” denilmez."],
+ ilgili:[81,51,52]},
+
+{n:51, tema:"tabi", ar:"الساقط لا يعود", tr:"Sâkıt olan şey avdet etmez.",
+ acik:["Düşürülen haklar geri gelmez."],
+ ornek:["Muhayyerlik hakları düşürüldükten sonra geri gelmez.", "Bir davada şahitlik için tezkiye edilmeyen kişinin sonradan adil olduğu anlaşılsa bile o davada artık şahitlik yapamaz.", "Kişi malını satsa, müşteri parayı verene kadar satıcının hapis hakkı vardır; fakat satıcı malı teslim ederse bu hak düşer ve malı geri alamaz."],
+ istisna:[],
+ not:["Miras gibi aynî haklar düşürülemez.", "Şuf‘a hakkı satıştan önce var olmadığı için düşürülemez.", "Rü’yet muhayyerliği görmeden önce düşürülemez.", "Gecelemeye (mebît) dair hakkını düşüren kadın, onu tekrar talep edebilir."],
+ ilgili:[50,52]},
+
+{n:52, tema:"tabi", ar:"إذا بطل الشيء بطل ما في ضمنه", tr:"Bir şey bâtıl olunca, onun zımnındaki şey de bâtıl olur.",
+ acik:["Bir şey geçersiz olursa ona bağlı ve onun içinde yer alan şeyler de geçersiz olur."],
+ ornek:["Guslü gerektiren şey abdesti de bozar.", "“Kanımı sana şu kadara sattım, beni öldür” diyen kişinin verdiği izin geçerli değildir; kanın satılması caiz olmadığından zımnındaki öldürme izni de geçersizdir.", "Müşteri aldığı maldaki kusur için satıcıyla başka bir mal karşılığı sulh yapsa, sonra müşterinin özel bir çabası olmadan kusur düzelse yapılan sulh geçersiz olur.", "Diploması iptal edilen kişinin bu diplomayla kazandığı bütün haklar da iptal olur."],
+ istisna:["Kişi şuf‘a hakkını satarsa bu satış geçersizdir; ancak bu satış girişimi şuf‘a hakkını düşürür, çünkü rıza oluşmuştur. Burada “satış geçersiz olduğu için şuf‘anın düşmesi de geçersizdir” denilmez."],
+ ilgili:[50,51]},
+
+{n:53, tema:"tabi", ar:"إذا بطل الأصل يصار إلى البدل", tr:"Asıl bâtıl (müteazzir) olunca bedele gidilir.",
+ acik:["Aslın yapılamadığı yerde bedeli yapılır. PDF’te kâide «إذا بطل / تعذر الأصل يصار إلى البدل» şeklinde iki ifadeyle verilmiştir."],
+ ornek:["Gâsıp gasbettiği malı geri vermelidir; çeşitli sebeplerle mal elinde yoksa kıymetini vererek tazmin eder.", "Abdest almak mümkün değilse teyemmüm alınır."],
+ istisna:[], ilgili:[31,61]},
+
+{n:54, tema:"tabi", ar:"يغتفر في التوابع ما لا يغتفر في غيرها", tr:"Tâbi olan şeylerde, başkalarında affedilmeyen şey affolunur.",
+ acik:["Metbûda (asıl olanda) caiz olmayan şeyler, tâbide caiz olabilir."],
+ ornek:["Aslında menkul mallar vakfedilmez; fakat bir gayrimenkulün içindeki menkullerin onunla birlikte vakfedilmesinde beis yoktur.", "Cumhura göre inek kesilince karnındaki yavru ölü doğsa da eti yenir.", "Müslümanlara ateş etmek haramdır; fakat kâfirler onları kalkan olarak kullandığında, kâfirleri kastederek o yöne ateş etmek caiz olur.", "Satıcı kabza vekil kılınamaz; fakat kişi satıcıya kendi çuvalını, malı içine doldurması için verse geçerli olur (metbû: kabz; tâbi: çuvala doldurma yoluyla kabz)."],
+ istisna:[], ilgili:[47,55]},
+
+{n:55, tema:"tabi", ar:"يغتفر في البقاء ما لا يغتفر في الابتداء", tr:"Bekâda, ibtidâda affedilmeyen şey affolunur.",
+ acik:["Başlangıçta cevaz verilmeyen bir şeye, süreç devam ederken cevaz verilebilir."],
+ ornek:["Hisse-i şâyi‘ taksim edilmeden hibe edilemez; fakat bir mal hibe edildikten sonra malda üçüncü şahsın hakkı olduğu ortaya çıksa hibe iptal olmaz.", "Evlilik akdinin başlangıcında sütkardeşler evlenemez; fakat bilmeden evlenmiş ve çocukları olmuşsa bu evliliğin devamına cevaz verilir."],
+ istisna:[], ilgili:[56,54]},
+
+{n:56, tema:"tabi", ar:"البقاء أسهل من الابتداء", tr:"Bekâ, ibtidâdan daha kolaydır.",
+ acik:["Süreç içerisinde bir şeyin cevazına hükmetmek, başlangıçtakinden daha kolaydır."],
+ ornek:["İddet sürecinde kadın evlenemez; bu süreçte kadın “iddetliyim” dese sözü esastır. Fakat evlilik akdi gerçekleştikten sonra kadın iddetliyken evlendiğini iddia etse ve erkek inkâr etse erkeğin sözü esastır; çünkü süren evliliğin devamı esastır.", "Evlilik akdi sırasında mehir hibe edilemez; fakat evlilik içinde kadın mehrini hibe edebilir.", "Bir kimse murisin mirasını reddedemez; fakat miras kendisine intikal ettikten sonra hibe edebilir.", "Sehiv secdesi de bu kâidenin ruhuyla ilişkilidir: Yanılan kimse bu secdeyle namazı baştan kılmaktan kurtulur."],
+ istisna:[], ilgili:[55]},
+
+{n:57, tema:"velayet", ar:"لا يتم التبرع إلا بقبض", tr:"Teberru, ancak kabz ile tamam olur.",
+ acik:["Teberru akitleri ancak kabz (teslim alma) ile tamamlanır.", "Teberruât: Bağışlama kastıyla yapılan bütün kazandırma işlemlerinin ortak adıdır. Genellikle hibe, ıtk, vasiyet, vakıf ve sadaka bu kapsamdadır."],
+ ornek:[],
+ istisna:[],
+ not:["Hibeden dönüşün geçerli olmadığı durumlar (PDF’te «دمع خزقه» formülüyle hatırlatılır): 1) Ziyâde-i muttasıla, 2) Mevt, 3) İvaz, 4) Hurûc (mülkten çıkma), 5) Zevciyyet, 6) Karâbet, 7) Helâk."],
+ ilgili:[13,85]},
+
+{n:58, tema:"velayet", ar:"التصرف على الرعية منوط بالمصلحة", tr:"Raiyye (halk) üzerindeki tasarruf, maslahata bağlıdır.",
+ acik:["Halk üzerindeki tasarrufların genel bir maslahata dayanması gerekir.", "Yöneticiler devleti yönetirken kendilerinin veya akrabalarının menfaatini değil, halkın genel menfaatini gözetmelidir. İslâm hukukuna göre keyfî kararlarından dolayı sorumlu tutulurlar."],
+ ornek:["Halife bir beldeye fâsık bir imam gönderemez.", "Bazı araziler kamu yararına binaen imara açılabilir.", "Hayvan neslinin ıslahı veya yok olma tehlikesi durumunda belli hayvanların kesilmesine veya avlanmasına yasak getirilebilir."],
+ istisna:["Baba ya da dede sarhoş değilse ve daha önce yanlış tercihleri bilinmiyorsa, küçük kız veya erkek çocuklarını denklik (kefâet) olmaksızın evlendirmeleri geçerlidir; çünkü bunların yine de çocuğun maslahatını gözeteceği düşünülür."],
+ ilgili:[59,26]},
+
+{n:59, tema:"velayet", ar:"الولاية الخاصة أقوى من الولاية العامة", tr:"Velâyet-i hâssa, velâyet-i âmmeden daha kuvvetlidir.",
+ acik:["Hususi velâyet, umumi velâyetten daha güçlüdür.", "Halife (imam), velisi olmayanların velisidir: «الإمام ولي من لا ولي له»."],
+ ornek:["Hâkim bir vakfın yerini A kişisine, mütevelli heyeti ise B kişisine icâre verse, mütevellinin icâresi dikkate alınır.", "Hususi velinin kısası karşılıksız (meccânen) düşürmesi mümkün iken, imamın kısası meccânen düşürme hakkı yoktur."],
+ istisna:[], ilgili:[58]},
+
+{n:60, tema:"lafiz", ar:"إعمال الكلام أولى من إهماله", tr:"Kelâmın i‘mâli, ihmalinden evlâdır.",
+ acik:["Söylenen bir söze anlam yükleyip onu işletmek, manasız sayıp hükümsüz bırakmaktan daha evlâdır."],
+ ornek:["Kişi “Malımı evlatlarıma vakfettim” dese ve çocuğu olmayıp torunları olsa, “çocukları yok” denilerek söz hükümsüz bırakılmaz; mecaza hamledilerek işletilir ve mal torunlara verilir.", "Adam karısına ve eşeğe “İkinizden biri boştur” dese karısı boş olur.", "Bir adam birine bin lira borcu olduğunu ikrar etse, başka bir gün aynı kişiye bin lira borcu olduğunu yenilese, iki bin lira borcu olduğu kabul edilir."],
+ istisna:[], ilgili:[61,62,12]},
+
+{n:61, tema:"lafiz", ar:"إذا تعذرت الحقيقة يصار إلى المجاز", tr:"Hakiki mânâ müteazzir olunca mecaza gidilir.",
+ acik:["Bir kelamın hakiki mânâsı alınamıyorsa mecazi mânâsı tercih edilir.", "Hakiki mânâyı almaya engel olan durum (teazzür) üç türlüdür."],
+ ornek:["Torunu ve çocuğu olmayan kişinin “malımı evladıma bıraktım” demesi: Hakiki mânâyı almak imkânsızdır.", "“Bu ağaçtan yemeyeceğim” diyen kişi için hakiki mânâ ağacın odununu yememektir; ama asıl maksat meyvedir.", "“Buraya adımımı atmam” sözünde maksat girmektir, adım atmak değil."],
+ istisna:[],
+ tablo:{baslik:"Teazzürün Türleri", kolonlar:[
+   {b:"Hakiki", m:["1) Hakiki mânâyı almak imkânsızdır (çocuğu ve torunu olmayanın “evladıma bıraktım” demesi).", "2) Hakiki mânâ alındığında aşırı bir zorluk ortaya çıkar (“Bu ağaçtan yemeyeceğim”: hakiki mânâ odun, asıl maksat meyve)."]},
+   {b:"Örfî", m:["İnsanların lafzın hakiki mânâsını terk ettiği cümlelerdir.", "“Buraya adımımı atmam.” Maksat girmektir, adım atmak değil."]},
+   {b:"Şer‘î", m:["Şer‘î ıstılahta lafzın hakiki mânâsı göz ardı edilip ona yeni bir anlam yüklenmesidir.", "Husûmet: Hakiki mânâsı düşmanlık olsa da maksat mahkemeleşmektir."]}]},
+ ilgili:[12,60,62,40]},
+
+{n:62, tema:"lafiz", ar:"إذا تعذر إعمال الكلام يهمل", tr:"Kelâmın i‘mâli müteazzir olursa ihmal olunur.",
+ acik:["Kelamın işletilmesine engel bir durum varsa söz yokmuş gibi kabul edilir. Halk deyişiyle “öküz altında buzağı aramanın” gereği yoktur.", "Bunun iki sebebi vardır: Ya hakiki ve mecazi mânâları almak imkânsızdır ya da açıklaması (beyan) yapılmamış mücmel bir lafız vardır."],
+ ornek:["Bir kimsenin kendisinden yaşça büyük olan ya da nesebi belli olan birinin oğlu olduğunu iddia etmesi aklen muhal ve boş bir sözdür.", "Bir kimse başkasının parmağını kestiğini ve bu yüzden diyet borcu olduğunu ikrar etse, fakat o kimsenin bütün parmakları tam olsa, bu ikrar işletilemeyeceği için ihmal edilir.", "‘Mevlâ’ kelimesi hem köleyi azat eden hem de azat edilen köle için kullanılır. Bir kimse ‘mevlâsına’ vasiyette bulunsa ve her iki türden mevlâsı da bulunsa, hangisini kastettiğine dair bir beyanı yoksa vasiyet bâtıl olur."],
+ istisna:[], ilgili:[60,61,38]},
+
+{n:63, tema:"lafiz", ar:"ذكر بعض ما لا يتجزأ كذكر كله", tr:"Tecezzî kabul etmeyen bir şeyin bir kısmını zikretmek, tamamını zikretmek gibidir.",
+ acik:["Parçalara bölünemeyen bir şeyin bir kısmından söz etmek, tamamından söz etmek gibidir."],
+ ornek:["Nefse kefalette “Ben bunun ayaklarına kefilim” diyen kişi tamamına kefil olur.", "Şuf‘a konusunda “Şuf‘a hakkımın üçte birinden vazgeçtim” diyen kişinin şuf‘a hakkının tamamı düşer.", "Maktulün velisi “Kısasın dörtte birini affettim” dese kısasın tamamı düşer; çünkü kısas bölünmez, aynı anda biraz kısas biraz diyet olmaz ve tamamen diyete döner."],
+ istisna:[], ilgili:[60]},
+
+{n:64, tema:"lafiz", ar:"المطلق يجري على إطلاقه ما لم يقم دليل التقييد نصا أو دلالة", tr:"Mutlak, sarahaten veya delâleten takyit delili bulunmadıkça ıtlakı üzere cârî olur.",
+ acik:["Sarahaten veya delâleten bir sınırlama (takyit) delili yoksa, mutlak lafzın mutlaklığına göre hükmedilir."],
+ ornek:["Bir kimse birini araba almak için vekil kılsa, vekil kırmızı araba alsa, müvekkil “Ben siyah istemiştim” dese sözüne itibar edilmez; vekilin aldığını kabule mecburdur.", "Kurban bayramından az önce koyun almak için vekil tayin edilen kimse o koyunu bayramdan sonra alamaz; çünkü hâlin delâleti koyunun kurbanlık olduğunu gösterir."],
+ istisna:[], ilgili:[45,13]},
+
+{n:65, tema:"lafiz", ar:"الوصف في الحاضر لغو وفي الغائب معتبر", tr:"Hâzırdaki vasıf lağvdır, gâibdeki vasıf muteberdir.",
+ acik:["Mecliste hazır olan bir şeyi vasıflandırmanın değeri yoktur; fakat hazır olmayan (gâib) şeydeki vasıflamaya itibar edilir.", "Hazır olup vasfedilen şey, işaret edilenin cinsinden olmalıdır."],
+ ornek:["Satıcı, müşteri ve mal mecliste iken satıcı “Şu MDF masayı sana 500 TL’ye sattım” dese ve müşteri masaya bakıp kabul etse akit geçerlidir. Masanın sunta olduğu anlaşılsa bile müşterinin akitten dönme hakkı yoktur; çünkü icap ve kabul mal hazırken yapılmıştır.", "Satıcı “Şu elması sana sattım” dese ve müşteri kabul etse, fakat elmas denilen şeyin cam olduğu ortaya çıksa akit geçersizdir; çünkü cins farklıdır."],
+ istisna:[], ilgili:[66]},
+
+{n:66, tema:"lafiz", ar:"السؤال معاد في الجواب", tr:"Sual, cevapta iade edilmiş sayılır.",
+ acik:["Soru, cevapta tekrar dile getirilmiş gibi kabul edilir.", "İkrah altında verilen cevaplara itibar edilmez."],
+ ornek:["Satıcı “Siyah renkli, Opel marka, 50 bin km’deki aracımı 200 bin TL’ye sattım” dese ve müşteri “Tamam, aldım” dese, aslında “Siyah renkli, Opel marka, 50 bin km’deki aracı 200 bin TL’ye aldım” demiş olur.", "Fuzûlî biri başkasının malını izinsiz satsa, sonra mal sahibine gidip “Bu satışa izin verdin mi?” dese ve mal sahibi “evet” dese, bu söz “satışa izin verdim” demektir ve satış geçerli olur."],
+ istisna:[], ilgili:[65,67]},
+
+{n:67, tema:"lafiz", ar:"لا ينسب إلى ساكت قول لكن السكوت في معرض الحاجة إلى البيان بيان", tr:"Sâkite bir söz isnat olunmaz; fakat ihtiyaç anında sükût beyandır.",
+ acik:["Susan kişiye bir söz isnat edilmez; fakat açıklama yapılması gereken bir yerde susması beyan niteliğindedir."],
+ ornek:["Bir kişi başkasının malını onun duyacağı şekilde satsa ve mal sahibi ses çıkarmasa, bu satışa rıza gösterdiği anlamına gelmez.", "Bir kişi başkasının malını onun huzurunda telef etse ve mal sahibi sussa, bu malının telef edilmesine rıza gösterdiği anlamına gelmez.", "Ölüm hastalığındaki bir adam insanları toplayıp “Şahit olun, kimseye borcum yok” dese ve aralarındaki bir alacaklı sussa, bu alacaklının adamın vefatından sonra alacağını istemesine engel olunamaz.", "Bir mal satın almak isteyen kişiye başkası o malda bir ayıp olduğunu haber verse ve müşteri sussa, sonra malı satın alırsa ayıp muhayyerliğiyle geri veremez; çünkü ayıbı duyduğunda susması rızadır (ihtiyaç anında sükût)."],
+ istisna:[], ilgili:[13,66]},
+
+{n:68, tema:"ispat", ar:"دليل الشيء في الأمور الباطنة يقوم مقامه", tr:"Bâtınî işlerde bir şeyin delili onun yerine kâim olur.",
+ acik:["Gözle görülmeyen (bâtınî) işlerde, o şeyin zahirî delili onun yerine geçer."],
+ ornek:["Ergenlik aslında akılla ilgilidir; fakat akıl görülmeyen bâtınî bir şey olduğundan onu gösteren alamete bakılır: erkekte hamile bırakmak, kadında hamile kalmak.", "Satışta asıl olan rızadır; rıza bâtınî bir olgu olduğundan onun alameti olan icap ve kabule bakılır.", "Yolda bir mal bulan, sahibine vermek niyetiyle alırsa emanetçi, kendisi için alırsa gâsıp olur. Niyet bâtınî olduğundan sözle veya fiille belli olur: Malı alırken sahibine vermek üzere aldığını ilan edip şahit tutarsa emanetçidir ve elinde telef olsa ödemez; ilan etmeksizin alırsa gâsıp sayılır ve telefi halinde öder."],
+ istisna:["Süt emziren kadın memesini çocuğun ağzına verse, fakat çocuğun ağzına süt girip girmediğini bilmese, çocuk ona haram olmaz. Yani memeyi verme, bâtınî iş olan sütün içilmesine delil olmaya yetmez."],
+ ilgili:[2,75]},
+
+{n:69, tema:"ispat", ar:"الكتاب كالخطاب", tr:"Yazı, söz gibidir.",
+ acik:["Yazılı beyan, sözlü beyan gibi hüküm doğurur."],
+ ornek:["Bir tüccar kendi hesap defterine başka bir tüccar için “Şu kadar borcum var” diye yazsa, bu yazı dava esnasında borç ikrarı kabul edilir.", "Bir kimsenin yazdırıp imzaladığı veya mühürlediği çek ya da senet ikrar yerine geçer."],
+ istisna:[],
+ tablo:{baslik:"Mektup (Yazı) Türleri", kolonlar:[
+   {b:"Müstebîne ve Mersûme", m:["Okunaklı ve usulüne uygun (adrese teslim) yazı.", "Hüküm doğurur."]},
+   {b:"Müstebîne, Gayr-i Mersûme", m:["Okunaklı ama usulüne uygun olmayan yazı.", "Niyete bakılır; şahit tutar veya imlâ ettirirse hüküm doğar."]},
+   {b:"Gayr-i Müstebîne", m:["Okunaksız, iz bırakmayan yazı.", "Hüküm doğurmaz."]}]},
+ ilgili:[70,79]},
+
+{n:70, tema:"ispat", ar:"الإشارات المعهودة للأخرس كالبيان باللسان", tr:"Dilsizin bilinen işaretleri, dil ile beyan gibidir.",
+ acik:["Dilsiz kişinin herkesçe bilinen işaretleri, dille yapılmış beyan hükmündedir."],
+ ornek:[],
+ istisna:["Dilsizin had konularında işaretleri kabul edilmez; çünkü hadler şüpheyle düşer.", "Dilsizin şahitlik konularında işaretleri kabul edilmez."],
+ ilgili:[69,71]},
+
+{n:71, tema:"ispat", ar:"يقبل قول المترجم مطلقا", tr:"Mütercimin sözü mutlak olarak kabul olunur.",
+ acik:["Tercümanın sözü her konuda kabul edilir."],
+ ornek:[],
+ istisna:[], not:["Hadlerde ihtiyatla amel için tercümanın erkek olması gerekir; kadın olursa kabul edilmez."],
+ ilgili:[70]},
+
+{n:72, tema:"ispat", ar:"لا عبرة بالظن البين خطؤه", tr:"Hatası açık olan zanna itibar yoktur.",
+ acik:["Yanlışlığı açıkça ortaya çıkan bir zanna dayanılarak hüküm kurulamaz."],
+ ornek:["Müçtehit, zannî bir meselede verdiği hükme karşı kendisine daha kuvvetli bir delil veya görüş getirilirse, fetvasından kuvvetli delile dönmesi vacip olur.", "Koca, Zeyd’in evde olmadığını zannederek hanımına üç defa “Zeyd evde ise boşsun” dese ve evliliklerine devam etseler, ertesi gün Zeyd’in evde olduğu ortaya çıksa hanımı boş olur."],
+ istisna:[], ilgili:[74,4,16]},
+
+{n:73, tema:"ispat", ar:"لا حجة مع الاحتمال الناشئ عن دليل", tr:"Delilden neş’et eden ihtimal ile hüccet olmaz.",
+ acik:["Bir delilden doğan ihtimal, hücceti geçersiz kılar."],
+ ornek:["Bir kimse ölüm hastalığında varislerinden biri için borç ikrar etse, diğer varisler tasdik etmedikçe bu borç sabit olmaz; çünkü bu ikrarla diğer varisleri mirastan mahrum bırakmayı kastetmiş olma ihtimali vardır.", "Yakın akrabalar ve eşler birbirleri lehine şahitlik edemezler.", "Bir kimse varisi olmayan iki kişiye, biri sağlığında diğeri ölüm hastalığında olmak üzere borç ikrar etse, terekeden önce sağlığında ikrar ettiği borç ödenir; artarsa ölüm hastalığındaki ödenir."],
+ istisna:[], ilgili:[74]},
+
+{n:74, tema:"ispat", ar:"لا عبرة للتوهم", tr:"Tevehhüme itibar yoktur.",
+ acik:["Derece bakımından şekten de aşağıda bulunan vehme hiçbir konuda itibar edilmez."],
+ ornek:["Bir kişi tarafından yaralanan kimse iyileşse ve bir müddet sağlıklı yaşadıktan sonra ölse, yakınlarının onun bu yaralamadan öldüğü gerekçesiyle yaralayandan diyet talep etmeleri dinlenmez.", "Veli, yetimin malını “Bir yangın çıkar da bu mallar yanar” ihtimaline dayanarak satamaz."],
+ istisna:[], ilgili:[73,4,72]},
+
+{n:75, tema:"ispat", ar:"الثابت بالبرهان كالثابت بالعيان", tr:"Burhan ile sabit olan, ıyânen (gözle görülerek) sabit olan gibidir.",
+ acik:["Delille ispat edilen şey, açıkça gözle görülmüş gibi sabit sayılır."],
+ ornek:["Bir kimse iddia ettiği borcu, kefaleti veya satışı delille (ikrar, yazılı ve imzalı belge vb.) ispat ederse, gözle görülmüş gibi hükmedilir."],
+ istisna:[], ilgili:[76,78]},
+
+{n:76, tema:"ispat", ar:"البينة على المدعي واليمين على من أنكر", tr:"Beyyine müddeî için, yemin münkir üzerinedir.",
+ acik:["Delil getirmek (âdil şahitlik) davacıya, yemin ise davalıya (inkâr edene) aittir.", "Davacı (müddeî): Zahirin hilâfını iddia eden kişidir."],
+ ornek:["Bir kadın bir kimsenin kocası olduğunu iddia edip nafaka talep etse ve o kimse inkâr etse, kadın iddiasını ispat etmelidir. İspat edemezse kocadan yemin istenir; yemin ederse dava reddedilir, yeminden kaçınırsa nafakaya hükmedilir."],
+ istisna:[], ilgili:[77,14,75]},
+
+{n:77, tema:"ispat", ar:"البينة لإثبات خلاف الظاهر واليمين لبقاء الأصل", tr:"Beyyine, hilâf-ı zâhiri ispat için; yemin, aslın bekâsı içindir.",
+ acik:["Delil getirmek zahire aykırı olanı ispat etmek içindir; yemin ise var olan durumun (aslın) devamı içindir."],
+ ornek:["Kişinin berî olmadığını ispatlamak için delil istenirken, berî olduğunu ispatlamak için yemin etmesi yeterlidir.", "Asıl olan müminin hırsız olmamasıdır; aleyhine beyyine getirilemeyen davalı “Vallahi onu ben çalmadım” demekle kurtulur.", "Alıcı satışın karşılıklı rızayla yapıldığını, satıcı ise zorla yapıldığını iddia etse, alıcının beyanına itibar edilir; satıcı iddiasını ispat etmek zorundadır, çünkü akitlerde rıza esastır."],
+ istisna:[], ilgili:[76,8,5]},
+
+{n:78, tema:"ispat", ar:"البينة حجة متعدية والإقرار حجة قاصرة", tr:"Beyyine hüccet-i müteaddiye, ikrar hüccet-i kâsıradır.",
+ acik:["Beyyine herkesi kapsayan (başkalarına da geçen) bir hüccettir; ikrar ise sadece ikrar edeni bağlayan sınırlı bir hüccettir."],
+ ornek:["Şahitlikle ispat edilen bir suçta bütün sanıklar ceza alırken, ikrarla ispat edilen suçta yalnızca ikrar eden sanık ceza alır.", "“Ben ve Abdullah falanın evinden şunu çaldık” diyen kişinin hırsızlık itirafı kendisi için geçerlidir; Abdullah itiraf etmediği sürece o hırsızlıkla suçlanmaz."],
+ istisna:[], ilgili:[79,75]},
+
+{n:79, tema:"ispat", ar:"المرء مؤاخذ بإقراره", tr:"Kişi ikrarıyla muaheze olunur.",
+ acik:["Kişi kendi ikrarından sorumlu tutulur."],
+ ornek:["İşçi ücretini işverenden alsa ve aldığını ikrar etse, sonra aldığı paraların sahte olduğunu iddia etse iddiası dinlenmez.", "Bir kimse zimmetinde başkasına ait bir miktar mal olduğunu ikrar etse ikrarı geçerlidir; sonradan “şaka yaptım” diyerek ikrarından dönemez."],
+ istisna:[], ilgili:[78,80,100]},
+
+{n:80, tema:"ispat", ar:"لا حجة مع التناقض لكن لا يختل معه حكم الحاكم", tr:"Tenâkuz ile hüccet olmaz; fakat tenâkuz, hâkimin hükmünü bozmaz.",
+ acik:["Çelişkili ifadeler olduğunda hüccet geçerli değildir; fakat hâkimin verdiği hüküm bozulmaz."],
+ ornek:["Bir adam birbirine zıt iki söz söylese hâkim ikisine de itibar etmez, hüccet saymaz.", "Hâkim şahidin ilk sözüne göre karar verdikten sonra şahit şahitliğinden dönse hâkimin kararı bozulmaz; ancak şahit doğan zararı tazmin eder."],
+ istisna:[], ilgili:[79,16]},
+
+{n:81, tema:"ispat", ar:"قد يثبت الفرع مع عدم ثبوت الأصل", tr:"Bazen asıl sabit olmadığı halde fer sabit olur.",
+ acik:["Asıl ispat edilemediği halde ona bağlı olan fer sabit olabilir."],
+ ornek:["Bir kimse “Falanın falana şu kadar borcu vardır, ben de ona kefilim” dese ve asıl borçlu inkâr etse, fakat alacaklı borcun varlığını iddia etse, söz konusu meblağı kefilin vermesi gerekir."],
+ istisna:[], ilgili:[50]},
+
+{n:82, tema:"sart", ar:"المعلق بالشرط يجب ثبوته عند ثبوت الشرط", tr:"Şarta bağlanan şey, şart sabit olunca sabit olur.",
+ acik:["Hukukî tasarrufların bir şarta bağlanması caizdir; o şart gerçekleştiğinde iş de sabit olur."],
+ ornek:["Kişi karısına “Kerim gelirse boşsun” dese ve Kerim gelse kadın boş olur.", "Bir kimse müşteri adına satıcıya “Müşteri ödemezse ben kefilim” dese ve müşteri parayı vermese, kefil ödemekle sorumludur.", "Kişi “Gökten kırmızı kar yağarsa üç gün oruç tutayım” dese bu geçerli değildir; çünkü âdeten mümkün değildir."],
+ istisna:[],
+ tablo:{baslik:"Şarta Bağlanmaya Elverişlilik Açısından İşler", kolonlar:[
+   {b:"Mutlak olarak şarta bağlanması sahih olanlar", m:["Talak ve azat gibi ıskâtât türü tasarruflar.", "“Bana kötü davranırsan boşsun” veya “Eve girersen boşsun” şartı sahihtir."]},
+   {b:"Mülâyim şarta bağlanması sahih olanlar", m:["İtlâkât türü (ticarete izin gibi) tasarruflar ile akdin gereğinden olan veya örfleşmiş şartlar.", "Garanti talebi, montaj-kurulum-nakliye şartı vb."]},
+   {b:"Şarta bağlanması hiç sahih olmayanlar", m:["Bey‘, icâre, hibe, âriyet gibi akitler.", "“Ahmet akşam namazında camiye gelirse şu evimi sana sattım” denilse, Ahmet gelse de gelmese de şart sahih olmaz ve akit gerçekleşmez."]}]},
+ ilgili:[83,84,38]},
+
+{n:83, tema:"sart", ar:"يلزم مراعاة الشرط بقدر الإمكان", tr:"İmkân miktarı şarta riayet etmek lazımdır.",
+ acik:["Koşulan şarta imkân dâhilinde riayet edilmelidir.", "Bu şartın caiz, yani şer‘an koşulması mümkün şartlardan olması gerekir."],
+ ornek:["Bir kimse birine emanet verip emaneti şehir dışına çıkarmamasını şart koşsa, emanetçi şehir dışına çıkarsa ve emanet helâk olsa tazmin eder; çünkü böyle bir şarta riayet mümkündür.", "Ortakların kendi aralarında şart koştukları orana göre kârı paylaşmaları caizdir ve şart sahihtir."],
+ istisna:[],
+ sartSema:true,
+ ilgili:[82,43]},
+
+{n:84, tema:"sart", ar:"المواعيد بصور التعاليق تكون لازمة", tr:"Talik suretindeki vaatler lâzım (bağlayıcı) olur.",
+ acik:["Vaat, mücerret (kayıtsız) veya muallak (şarta bağlı) olabilir; burada söz konusu olan muallak vaatlerdir.", "Vaatler talik şeklinde yapılırsa bağlayıcı olur."],
+ ornek:["Bir kimse birine “Bu malı falan adama sat; parasını vermezse ben veririm” dese ve alıcı parayı vermese, bu sözü verenin parayı ödemesi gerekir.", "Bir kimse emanet bırakana “Emanetçi emaneti zayi ederse bedelini ben öderim” dese ve emanetçi zayi etse, bu sözü veren bedelini tazmin eder."],
+ istisna:[], ilgili:[82]},
+
+{n:85, tema:"tazmin", ar:"الخراج بالضمان", tr:"Harâc (bir şeyden elde edilen menfaat), tazmin sorumluluğu mukabilindedir.",
+ acik:["Bir şeyin hasarını (riskini) üstlenen, onun menfaatine de hak kazanır."],
+ ornek:["Ayıp muhayyerliğiyle geri verilen bir hayvanı müşteri kullanmış olsa, satıcı ondan kira ücreti isteyemez; çünkü hayvan iade edilmeden önce telef olsaydı hasar müşteriye ait olacaktı.", "Bir kimse birine bir eşya hibe etse, hibe edilen onu kullansa veya kiraya verse, sonra hibe eden hibesinden dönse, bu süredeki faydalanma hibe edilene aittir."],
+ istisna:[],
+ not:["Hanefîlere göre gâsıp üç yerde menfaatin bedelini de öder: a) Yetim malı, b) Vakıf malı, c) Müaddün li’l-istiğlâl (gelir için hazırlanmış mal, ör. ekmek teknesi)."],
+ ilgili:[86,87,88]},
+
+{n:86, tema:"tazmin", ar:"الأجر والضمان لا يجتمعان", tr:"Ücret ile tazmin bir arada bulunmaz.",
+ acik:["Aynı sebepten kaynaklanıyorsa ücret ve tazmin birlikte istenemez; farklı sebepler varsa hem tazmin hem ücret bir arada olabilir.", "Hanefîler: «منافع الغصب غير مضمونة، زوائد الغصب مضمونة» (Gasbın menfaatleri tazmin edilmez, gasbın zevâidi tazmin edilir)."],
+ ornek:["Bir kimse birinin hayvanını kiralasa ve teaddisi olmadan hayvan telef olsa, kira ücreti dışında ayrıca tazminat ödemez.", "Bir kimse birinin arabasını gasbedip kötü kullansa ve arabanın değeri düşse, arabayı geri verir ve değer farkını tazmin eder; ayrıca kullanma karşılığı kira ücreti ödemez."],
+ istisna:[], ilgili:[85]},
+
+{n:87, tema:"tazmin", ar:"الغرم بالغنم", tr:"Zarara girmek, menfaat karşılığındadır.",
+ acik:["Bir şeyin menfaatinden yararlanan, onun külfet ve zararına da katlanır. 88. madde ile birlikte değerlendirilir."],
+ ornek:[], istisna:[], ilgili:[88,85]},
+
+{n:88, tema:"tazmin", ar:"النعمة بقدر النقمة والنقمة بقدر النعمة", tr:"Nimet külfete, külfet de nimete göredir.",
+ acik:["Menfaat, zarar (külfet) miktarıncadır. PDF’te bu kâide «الغنم بالغرم» ifadesiyle birlikte verilmiştir."],
+ ornek:["İşçi anlaşılan işi yapmadıkça ücrete hak kazanamaz; ücreti peşin verilen kimse de karşılığında kendisinden beklenen işi yapmak zorundadır.", "Kadınların miras payları, erkeklere göre (mali) yükümlülükleri karşılığında azdır."],
+ istisna:[], ilgili:[87,85]},
+
+{n:89, tema:"tazmin", ar:"يضاف الفعل إلى الفاعل لا الآمر ما لم يكن مجبرا", tr:"Fiil fâile izafe olunur; mücbir olmadıkça âmire izafe olunmaz.",
+ acik:["Bir fiilin hükmü onu işleyene aittir; emreden zorlayıcı (mücbir) değilse fiil ona izafe edilmez."],
+ ornek:["Bir kimse başkasına “Filanın malını telef et”, “malına kusur ver”, “bir uzvunu kes” ya da “masum birinin canına kıy” diye emretse ve o da yapsa, yapan tazminle mükelleftir; “Bana filanca emretti, mesul odur” diyemez.", "Bir kimse komşusuna ait koyunu işaret ederek birine “Bunu kes” dese, kesen kişi koyunun kime ait olduğunu bilsin bilmesin tazmin eder; ancak bilerek kestiyse emredene rücu hakkı yoktur, bilmeden kestiyse vardır."],
+ istisna:["Bir kimse birine dükkânının avlusunu sulamasını emretse ve o da sulasa, bundan doğan zararın tazmini emredene aittir. Emir olmaksızın sularsa tazmin sulayana aittir."],
+ ilgili:[95,90]},
+
+{n:90, tema:"tazmin", ar:"إذا اجتمع المباشر والمتسبب أضيف الحكم إلى المباشر", tr:"Mübâşir ile mütesebbib bir araya gelirse hüküm mübâşire izafe olunur.",
+ acik:["Bir zararı bizzat yapan (mübâşir) ile ona sebep olan (mütesebbib) birlikte bulunursa, sorumluluk doğrudan yapana aittir."],
+ ornek:["Biri umumi yolda bir kuyu kazsa, başka biri de başkasının hayvanını o kuyuya atsa ve hayvan telef olsa, hayvanı atan kıymetini öder, kuyuyu kazan ödemez; çünkü yalnızca kuyu kazmak telefi gerektirmez, hayvan mübâşirin fiiliyle telef olmuştur.", "Biri bir hırsıza yol gösterip başkasının malını haber verse ve hırsız onu çalsa, yol gösterenin ödemesi gerekmez."],
+ istisna:["Emanetçi emanet malı hırsıza gösterse, tarif etse ve hırsız malı çalsa, malı emanetçi tazmin eder."],
+ ilgili:[92,93,89]},
+
+{n:91, tema:"tazmin", ar:"الجواز الشرعي ينافي الضمان", tr:"Cevâz-ı şer‘î, tazmine münâfidir.",
+ acik:["Şer‘an caiz olan bir fiil, tazmin sorumluluğunu ortadan kaldırır."],
+ ornek:["Hâkimin şahitler sebebiyle verdiği yanlış hükmün sonuçlarını hâkim değil şahitler üstlenir.", "Kangren olan uzvu kesen doktor diyet, erş vb. ödemez, tazmin etmez.", "Hükümet görevlisi, Müslümana ait içki şişelerini kırsa tazmin etmez."],
+ istisna:[], ilgili:[92]},
+
+{n:92, tema:"tazmin", ar:"المباشر ضامن وإن لم يتعمد", tr:"Mübâşir, kasıt olmasa da zâmindir.",
+ acik:["Zararı doğrudan meydana getiren kişi, kastı olmasa bile tazminle sorumludur."],
+ ornek:["Bir insanın ayağı kaysa ve başkasının malını telef etse, kasıtlı olmasa da tazmin eder.", "Demircinin körüğünden sıçrayan alevler birinin elbisesini yaksa demirci öder."],
+ istisna:[], ilgili:[93,90]},
+
+{n:93, tema:"tazmin", ar:"المتسبب لا يضمن إلا بالتعمد", tr:"Mütesebbib, kasıt olmadıkça zâmin olmaz.",
+ acik:["Bir zarara yalnızca sebep olan kişi, kastı olmadıkça tazminle sorumlu değildir."],
+ ornek:["Kendi yaptığı alet başkası tarafından kullanılarak zarar verilse, aleti yapana tazmin yüklenmez; mübâşir tazmin eder.", "Katil bir kimseye öldüreceği kişinin adresini sorsa ve o kimse öldüreceğini bilmeden tarif etse sorumlu olmaz."],
+ istisna:[], ilgili:[92,90]},
+
+{n:94, tema:"tazmin", ar:"جناية العجماء جبار", tr:"Hayvanın (kendiliğinden) cinayeti hederdir.",
+ acik:["Hayvanların kendiliğinden verdiği zarar tazmin edilmez (heder olur)."],
+ ornek:["İki kişi hayvanlarını bağlama hakları olan bir yere yan yana bağlasa ve biri diğerine zarar verse, bu zarar ödenmez.", "Merada otlarken yanına yaklaşan kimseyi süsüp veya tepip öldüren hayvanın sahibi diyet ödemez."],
+ istisna:[], ilgili:[93]},
+
+{n:95, tema:"tazmin", ar:"الأمر بالتصرف في ملك الغير باطل", tr:"Başkasının mülkünde tasarrufu emretmek bâtıldır.",
+ acik:["Başkasının malında tasarruf edilmesini emretmek geçersizdir; sorumluluk emri yerine getirene aittir."],
+ ornek:["Bir kimse diğerine başkasına ait bir malı denize atmasını veya telef etmesini emretse ve o da malın başkasına ait olduğunu bile bile yapsa, tazmin sorumluluğu emri yerine getirene aittir.", "Bir kimse “Şu adamın malını al” veya “telef et” dese ve o da alsa veya telef etse, ikrah (tehdit ve zorlama) söz konusu olmadıkça alanın ödemesi gerekir."],
+ istisna:[], ilgili:[89,96]},
+
+{n:96, tema:"mulk", ar:"لا يجوز لأحد أن يتصرف في ملك الغير بلا إذنه", tr:"Hiç kimse başkasının mülkünde onun izni olmadan tasarruf edemez.",
+ acik:["Bir kimsenin başkasının mülkünde izni olmaksızın tasarruf etmesi caiz değildir."],
+ ornek:["Başkasının evine izinsiz girilemez.", "Başkasının tarlası izinsiz ekilemez.", "Başkasının eşyası izinsiz kullanılamaz."],
+ istisna:["Nafakasız kalan bir kadın, kocasının malından nafakası kadarını habersizce alabilir.", "Birlikte yolculuk eden iki kişiden biri hastalansa, diğeri onun izni olmaksızın tedavisi için onun malından harcama yapabilir."],
+ ilgili:[97,95]},
+
+{n:97, tema:"mulk", ar:"لا يجوز لأحد أن يأخذ مال أحد بلا سبب شرعي", tr:"Hiç kimse, şer‘î bir sebep olmadan başkasının malını alamaz.",
+ acik:["Şer‘î bir sebep yokken bir kişinin başkasının malını alması caiz değildir."],
+ ornek:["Satıcı ile müşteri maldaki bir ayıp hakkında davalaşsa, helâk veya yeni bir ayıp sebebiyle iade engeli çıksa ve eski ayıp sebebiyle bedelden bir miktar düşülse, sonra ayıbın olmadığı veya kendiliğinden yok olduğu anlaşılsa, müşteri aldığı miktarı satıcıya geri vermelidir.", "Unutarak başkasının malını alan kişi, hatırlayınca onu sahibine vermelidir; çünkü unutmak kul haklarında özür değildir."],
+ istisna:[], ilgili:[96,98]},
+
+{n:98, tema:"mulk", ar:"تبدل سبب الملك قائم مقام تبدل الذات", tr:"Mülk sebebinin değişmesi, zatın değişmesi yerine geçer.",
+ acik:["Bir malın kendisi değişmediği halde temellük sebebinin (mülk edinme illetinin) değişmesiyle o malın hükmü değişir."],
+ ornek:["Zenginlerin zekât alması caiz değildir; ancak fakir aldığı zekâtı bir zengine hediye etse, zenginin bunu alması caizdir; çünkü artık mülk edinme sebebi değişmiştir."],
+ istisna:[], ilgili:[97]},
+
+{n:99, tema:"mulk", ar:"من استعجل الشيء قبل أوانه عوقب بحرمانه", tr:"Bir şeyi vaktinden önce isteyen, ondan mahrum kalmakla cezalandırılır.",
+ acik:["Bir şeyi zamanından önce, meşru olmayan yolla elde etmeye çalışan o şeyden mahrum bırakılır."],
+ ornek:["Bir şahıs bir an önce mirasa konmak için murisini öldürürse mirastan mahrum olur; çünkü mirasa vaktinden önce sahip olmak istemiştir.", "Ümmü veled hürriyetine kavuşmak için sahibini öldürse, ta‘zir cezası olarak hürriyeti verilmez."],
+ istisna:["Alacaklı borçluyu öldürse, alacağını yine de terekeden alır."],
+ ilgili:[100]},
+
+{n:100, tema:"mulk", ar:"من سعى في نقض ما تم من جهته فسعيه مردود عليه", tr:"Kendi tarafından tamam olan bir şeyi bozmaya çalışanın çabası kendisine reddolunur.",
+ acik:["Kendi rızasıyla tamamladığı bir şeyi bozmak isteyen kişinin bu isteği reddedilir.", "Hiçbir baskı altında kalmadan bizzat tamamladığı hibe, icâre, bey‘ vb. bir işlemi bozmaya çalışan kimsenin gayretleri muteber olmaz."],
+ ornek:["Bir adam ihtiyaç anında malını çok ucuza satsa, sonra ihtiyacı bitince “aldatıldım” iddiasıyla sattığını geri alamaz.", "Kadının evlilikten sonra “Nikâh kıyılırken eski kocamın iddetini bekliyordum” demesine bakılmaz."],
+ istisna:[], ilgili:[79,99,56]}
+];
+
+// Arapça boşluk doldurma soruları (kâide metni üzerinden)
+const BOSLUK = [
+ {n:2, s:"الأمور بـ ____", c:"مقاصدها", y:["ألفاظها","ظواهرها","نتائجها"]},
+ {n:4, s:"اليقين لا يزول بـ ____", c:"الشك", y:["الظن","البينة","اليمين"]},
+ {n:5, s:"الأصل بقاء ما كان ____", c:"على ما كان", y:["إلى أقرب أوقاته","ما لم يوجد المزيل","بقدر الإمكان"]},
+ {n:6, s:"القديم ____ على قدمه", c:"يترك", y:["يزال","يقاس","ينقض"]},
+ {n:8, s:"الأصل ____ الذمة", c:"براءة", y:["شغل","بقاء","إضافة"]},
+ {n:9, s:"الأصل في الصفات العارضة ____", c:"العدم", y:["الوجود","الحقيقة","البقاء"]},
+ {n:11, s:"الأصل إضافة الحادث إلى ____ أوقاته", c:"أقرب", y:["أبعد","أول","آخر"]},
+ {n:12, s:"الأصل في الكلام ____", c:"الحقيقة", y:["المجاز","الدلالة","الإعمال"]},
+ {n:13, s:"لا عبرة للدلالة في مقابلة ____", c:"التصريح", y:["العرف","النص","الظاهر"]},
+ {n:14, s:"لا مساغ للاجتهاد في مورد ____", c:"النص", y:["القياس","العرف","الإجماع"]},
+ {n:16, s:"الاجتهاد لا ينقض بـ ____", c:"مثله", y:["النص","القياس","الظن"]},
+ {n:17, s:"المشقة تجلب ____", c:"التيسير", y:["الضرورة","الرخصة","الحاجة"]},
+ {n:18, s:"الأمر إذا ضاق ____", c:"اتسع", y:["ضاق","زال","عاد"]},
+ {n:20, s:"الضرر ____", c:"يزال", y:["يترك","يقاس","يحتمل"]},
+ {n:21, s:"الضرورات تبيح ____", c:"المحظورات", y:["المباحات","المحرمات العظام","الرخص"]},
+ {n:22, s:"الضرورات تقدر بـ ____", c:"قدرها", y:["مثلها","أخفها","أعظمها"]},
+ {n:23, s:"ما جاز لعذر بطل بـ ____", c:"زواله", y:["مثله","وجوده","تعذره"]},
+ {n:24, s:"إذا زال المانع عاد ____", c:"الممنوع", y:["المقتضي","الأصل","الحكم"]},
+ {n:25, s:"الضرر لا يزال بـ ____", c:"مثله", y:["أخفه","أشده","قدره"]},
+ {n:27, s:"الضرر الأشد يزال بالضرر ____", c:"الأخف", y:["الخاص","العام","الأعظم"]},
+ {n:29, s:"يختار ____ الشرين", c:"أهون", y:["أعظم","أشد","أخف"]},
+ {n:30, s:"درء المفاسد أولى من ____", c:"جلب المنافع", y:["دفع الضرر","ارتكاب أخفهما","جلب التيسير"]},
+ {n:36, s:"العادة ____", c:"محكمة", y:["معتبرة","مطردة","غالبة"]},
+ {n:42, s:"العبرة للغالب الشائع لا لـ ____", c:"النادر", y:["القليل","المعدوم","الظاهر"]},
+ {n:47, s:"التابع ____", c:"تابع", y:["لا يفرد","أصل","متبوع"]},
+ {n:51, s:"الساقط لا ____", c:"يعود", y:["يزال","يقاس","يبطل"]},
+ {n:56, s:"البقاء أسهل من ____", c:"الابتداء", y:["الانتهاء","الإعمال","الإهمال"]},
+ {n:60, s:"إعمال الكلام أولى من ____", c:"إهماله", y:["تأويله","مجازه","تركه"]},
+ {n:66, s:"السؤال ____ في الجواب", c:"معاد", y:["معتبر","لغو","مهمل"]},
+ {n:69, s:"الكتاب كـ ____", c:"الخطاب", y:["البيان","الإقرار","الشهادة"]},
+ {n:74, s:"لا عبرة لـ ____", c:"التوهم", y:["الشك","الظن","الدلالة"]},
+ {n:79, s:"المرء مؤاخذ بـ ____", c:"إقراره", y:["نيته","قوله","فعله"]},
+ {n:85, s:"الخراج بـ ____", c:"الضمان", y:["الغنم","الأجر","الغرم"]},
+ {n:87, s:"الغرم بـ ____", c:"الغنم", y:["الضمان","الأجر","الخراج"]},
+ {n:92, s:"المباشر ____ وإن لم يتعمد", c:"ضامن", y:["معذور","مأمور","متسبب"]},
+ {n:93, s:"المتسبب لا يضمن إلا بـ ____", c:"التعمد", y:["المباشرة","الإذن","الإكراه"]},
+ {n:94, s:"جناية العجماء ____", c:"جبار", y:["مضمونة","باطلة","معتبرة"]}
+];
+
+</script>
+<script>
+/* ---------- yardımcılar ---------- */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const K=Object.fromEntries(KAIDELER.map(k=>[k.n,k]));
+const KQ=KAIDELER.filter(k=>k.n>1);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=(a,n)=>shuffle(a).slice(0,n);
+function norm(s){return String(s).toLocaleLowerCase('tr').normalize('NFD').replace(/[̀-ًͯ-ْٰ]/g,'').replace(/[‘’'`ʿʾ]/g,'').replace(/ı/g,'i').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')}
+// arapça içeren metinleri sarmala
+function arwrap(s){return esc(s).replace(/([؀-ۿ][؀-ۿ\s،]*[؀-ۿ]|[؀-ۿ])/g,'<span class="ar" style="font-size:1.15em">$1</span>')}
+function tchip(t){const T=TEMALAR[t];return `<span class="chip" style="color:${T.renk}">${T.ad}</span>`}
+
+/* ---------- kayıt ---------- */
+const KEY='mecelle_kaideler_v1';
+let S={calisildi:{},kart:{},test:{},gecmis:[]};
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+/* ---------- gezinme ---------- */
+function go(v,opt){
+  $$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  $$('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  if(v==='ilerleme')renderProgress();
+  if(v==='kartlar')renderCard();
+  if(!opt||!opt.keep)window.scrollTo({top:0});
+  try{history.replaceState(null,'','#'+v)}catch(e){}
+}
+$$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+
+/* ---------- giriş ---------- */
+(function(){
+  $('#g-kavram').innerHTML=GIRIS.kavramlar.map(k=>`<dt>${k[0]}</dt><dd>${esc(k[1])}${k[2]?`<div class="ar" style="font-size:22px;color:var(--green);margin-top:4px">${k[2]}</div>`:''}</dd>`).join('');
+  $('#g-onem').innerHTML=GIRIS.onem.map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#g-kaynak').innerHTML=GIRIS.kaynaklar.map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#g-not').innerHTML=GIRIS.notlar.map(x=>`<li>${esc(x)}</li>`).join('');
+  $('#g-fark').innerHTML=GIRIS.farklar.map((f,i)=>`<tr><td>${i+1}</td><td>${esc(f[0])}</td><td>${esc(f[1])}</td></tr>`).join('');
+  $('#g-serh').innerHTML=GIRIS.serhler.map(s=>`<tr><td><b>${s[0]}</b></td><td style="color:var(--ink2)">${s[1]}</td></tr>`).join('');
+  const cnt=t=>KAIDELER.filter(k=>k.tema===t).length;
+  $('#g-tema').innerHTML=Object.entries(TEMALAR).map(([k,T])=>`<button data-t="${k}"><i style="background:${T.renk}"></i>${T.ad} <span style="color:var(--muted)">(${cnt(k)})</span></button>`).join('');
+  $$('#g-tema button').forEach(b=>b.onclick=()=>{$('#tf').value=b.dataset.t;$('#q').value='';renderList();go('kaideler')});
+  $('#st-ornek').textContent=KAIDELER.reduce((a,k)=>a+k.ornek.length,0);
+  $('#st-ist').textContent=KAIDELER.reduce((a,k)=>a+k.istisna.length,0);
+  const opts=Object.entries(TEMALAR).map(([k,T])=>`<option value="${k}">${T.ad}</option>`).join('');
+  $('#tf').insertAdjacentHTML('beforeend',opts);$('#t-tema').insertAdjacentHTML('beforeend',opts);
+})();
+
+/* ---------- kâide kartları ---------- */
+function scaleHTML(){
+  const p=[["Cehl","%0","#7a2e2e"],["Vehm","","#a0522d"],["Şek","%50","#a8833a"],["Zan","%70","#6b8a4a"],["Zann-ı gâlip","","#3f7a5a"],["Yakîn","%100","#1f4d45"]];
+  return `<div class="blk"><h4 style="color:var(--green)">Bilgi Dereceleri</h4><div class="scale">${p.map(x=>`<div style="background:${x[2]}">${x[0]}<small>${x[1]||'&nbsp;'}</small></div>`).join('')}</div></div>`;
+}
+function sartHTML(){
+  return `<div class="tbl tree"><div class="tt">Şartın Türleri</div><div style="padding:12px 14px">
+  <div class="lvl" style="grid-template-columns:1fr 2fr">
+    <div class="node" style="align-self:start"><b>Şer‘î Şart</b><span class="sub">Nikâhta şahit ve veli şartı gibi.</span></div>
+    <div class="node"><b>Ca‘lî Şart</b>
+      <div class="lvl" style="grid-template-columns:1fr 1fr">
+        <div class="node" style="background:#fff"><b>Ta‘lîkî</b><span class="sub">(eğer, ise, şâyet)</span>
+          <ol class="clean sub" style="margin-top:6px">
+           <li><b style="display:inline;color:inherit">Iskâtât</b> türü tasarruflar mülâyim olsun olmasın ta‘lîkî şarta bağlanabilir. Mülâyim: “Nüşûz edersen boşsun.” Gayr-i mülâyim: “Güzellik salonuna gidersen boşsun.”</li>
+           <li><b style="display:inline;color:inherit">İtlâkât ve velâyât</b> türü tasarruflar (ticarete izin, kazâ, imâret) ile kefalet ve ibrâ sadece mülâyim şarta bağlanabilir: “Reşit olarak bulûğa erersen ticarete izin verdim.” “Borçlu kaybolursa ben kefilim.”</li>
+           <li><b style="display:inline;color:inherit">Temlîkât</b> türü akitler (bey‘, icâre, kısmet, hibe, maldan mal ile sulh) ta‘lîkî şarta bağlanamaz; şartın mülâyim olup olmaması fark etmez. Vasiyet ise kıyasa aykırı olarak (nas ile istihsanen) caizdir.</li>
+          </ol></div>
+        <div class="node" style="background:#fff"><b>Takyîdî</b><span class="sub">(… şartıyla / … üzere)</span>
+          <div class="sub" style="margin-top:8px"><b style="color:var(--ok)">Sahih / Caiz</b>1) Akdin gereği olan: satıcının mebîi hapis hakkı. 2) Akde mülâyim olan: rehin alma şartı. 3) Örfün gereği olan: garanti, nakliye ve kurulumun satıcıya ait olması.<br><span class="res">Akit de şart da sahihtir.</span></div>
+          <div class="sub" style="margin-top:10px"><b style="color:var(--gold)">Fâsit</b>Taraflardan birine, mebîe (köle) veya üçüncü şahıslara menfaat sağlayan şartlar: Satıcının bir ay binmesi şartıyla at satmak, azat edilmesi şartıyla köle satmak gibi.<br><span class="res">Bey‘, icâre, kısmet, sulh, müzâraa, müsâkâtta akit de şart da fâsittir.</span> <span class="res">Nikâh, talak, hul‘, ibrâ, hibe, sadaka, vasiyet, mudârebe, rehin, kefalette akit sahih, şart bâtıldır.</span></div>
+          <div class="sub" style="margin-top:10px"><b style="color:var(--bad)">Bâtıl / Lağv</b>Sattığı evde hiç kimsenin oturmamasını şart koşmak.<br><span class="res">Akit sahih, şart bâtıldır.</span></div>
+        </div>
+      </div></div>
+  </div></div></div>`;
+}
+function cardHTML(k){
+  const T=TEMALAR[k.tema];
+  const L=(cls,ttl,arr)=>arr&&arr.length?`<div class="blk ${cls}"><h4>${ttl}</h4><ul>${arr.map(x=>`<li>${arwrap(x)}</li>`).join('')}</ul></div>`:'';
+  const tbl=k.tablo?`<div class="tbl"><div class="tt">${esc(k.tablo.baslik)}</div><div class="cols">${k.tablo.kolonlar.map(c=>`<div class="col"><b class="${/[؀-ۿ]/.test(c.b)?'ar':''}" style="${/[؀-ۿ]/.test(c.b)?'font-size:22px;text-align:right':''}">${esc(c.b)}</b><ul>${c.m.map(x=>`<li>${arwrap(x)}</li>`).join('')}</ul></div>`).join('')}</div></div>`:'';
+  const done=!!S.calisildi[k.n];
+  return `<article class="kcard" id="k${k.n}" style="--tc:${T.renk}">
+   <div class="khead" data-n="${k.n}">
+     <div class="knum">Madde<b>${k.n}</b></div>
+     <div><div class="kar ar">${k.ar}</div><div class="ktr">${esc(k.tr)}</div></div>
+     <div class="kmeta">${tchip(k.tema)}<span class="done-badge" ${done?'':'hidden'}>✓ çalışıldı</span>
+       <svg class="caret" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></div>
+   </div>
+   <div class="kbody">
+     ${L('acik','Açıklama',k.acik)}
+     ${k.olcek?scaleHTML():''}
+     ${tbl}
+     ${k.sartSema?sartHTML():''}
+     ${L('ornek','Örnek Meseleler',k.ornek)}
+     ${L('istisna','Kâidenin İstisnası',k.istisna)}
+     ${L('not','Not',k.not)}
+     <div class="kfoot">
+       <button class="btn sm ${done?'ghost':''}" data-done="${k.n}">${done?'Çalışıldı ✓ (geri al)':'Çalıştım olarak işaretle'}</button>
+       ${k.n>1?`<button class="btn ghost sm" data-quiz="${k.n}">Bu temadan test çöz</button>`:''}
+       ${k.ilgili.length?`<span class="rel">İlgili kâideler: ${k.ilgili.map(n=>`<button data-go="${n}" title="${esc(K[n].tr)}">Md. ${n}</button>`).join('')}</span>`:''}
+     </div>
+   </div></article>`;
+}
+function renderList(){
+  const q=norm($('#q').value.trim()), t=$('#tf').value;
+  let L=KAIDELER.filter(k=>!t||k.tema===t);
+  if(q){
+    if(/^\d+$/.test(q))L=L.filter(k=>String(k.n)===q);
+    else L=L.filter(k=>norm([k.ar,k.tr,TEMALAR[k.tema].ad,...k.acik,...k.ornek,...k.istisna,...(k.not||[])].join(' ')).includes(q));
+  }
+  $('#klist').innerHTML=L.length?L.map(cardHTML).join(''):'<div class="empty">Aramanıza uygun kâide bulunamadı.</div>';
+  $('#kcount').textContent=L.length+' kâide';
+  if(q&&L.length<=3)$$('.kcard').forEach(c=>c.classList.add('open'));
+}
+$('#q').addEventListener('input',renderList);
+$('#tf').addEventListener('change',renderList);
+$('#openAll').onclick=()=>{const c=$$('.kcard'),open=c.some(x=>!x.classList.contains('open'));c.forEach(x=>x.classList.toggle('open',open));$('#openAll').textContent=open?'Tümünü kapat':'Tümünü aç'};
+$('#klist').addEventListener('click',e=>{
+  const h=e.target.closest('.khead'); if(h){h.parentElement.classList.toggle('open');return}
+  const d=e.target.closest('[data-done]'); if(d){const n=+d.dataset.done; if(S.calisildi[n])delete S.calisildi[n]; else S.calisildi[n]=Date.now(); save();
+    const c=$('#k'+n); const o=c.classList.contains('open'); c.outerHTML=cardHTML(K[n]); if(o)$('#k'+n).classList.add('open'); return}
+  const g=e.target.closest('[data-go]'); if(g){jump(+g.dataset.go);return}
+  const qz=e.target.closest('[data-quiz]'); if(qz){$('#t-tema').value=K[+qz.dataset.quiz].tema;go('test');return}
+});
+function jump(n){
+  go('kaideler',{keep:true});
+  if(!$('#k'+n)){$('#q').value='';$('#tf').value='';renderList()}
+  const c=$('#k'+n); c.classList.add('open','flash');
+  const off=(document.querySelector('header').offsetHeight||0)+($('.toolbar').offsetHeight||0)+12;
+  const y=c.getBoundingClientRect().top+window.pageYOffset-off;
+  try{window.scrollTo({top:y,behavior:'smooth'})}catch(e){window.scrollTo(0,y)}
+  setTimeout(()=>c.classList.remove('flash'),1600);
+}
+renderList();
+
+/* ---------- ezber kartları ---------- */
+let FC={deck:[],i:0};
+(function(){
+  const d=$('#fc-deck');
+  d.innerHTML=`<option value="all">Bütün kâideler (99)</option><option value="tekrar">Tekrar edilecekler</option><option value="yeni">Henüz bilinmeyenler</option>`+Object.entries(TEMALAR).filter(([k])=>k!=='tanim').map(([k,T])=>`<option value="${k}">${T.ad}</option>`).join('');
+  d.onchange=()=>buildDeck(); $('#fc-yon').onchange=()=>renderCard();
+  $('#fc-shuffle').onclick=()=>{FC.deck=shuffle(FC.deck);FC.i=0;renderCard()};
+  $('#fc').onclick=()=>$('#fc').classList.toggle('flip');
+  $('#fc-prev').onclick=()=>step(-1); $('#fc-next').onclick=()=>step(1);
+  $('#fc-know').onclick=()=>mark('bil'); $('#fc-again').onclick=()=>mark('tekrar');
+  document.addEventListener('keydown',e=>{
+    if(!$('#v-kartlar').classList.contains('on')||e.target.tagName==='SELECT')return;
+    if(e.key===' '){e.preventDefault();$('#fc').classList.toggle('flip')}
+    if(e.key==='ArrowRight')step(1); if(e.key==='ArrowLeft')step(-1);
+  });
+  buildDeck();
+})();
+function buildDeck(){
+  const v=$('#fc-deck').value;
+  let L=KQ;
+  if(v==='tekrar')L=KQ.filter(k=>S.kart[k.n]==='tekrar');
+  else if(v==='yeni')L=KQ.filter(k=>S.kart[k.n]!=='bil');
+  else if(v!=='all')L=KQ.filter(k=>k.tema===v);
+  FC.deck=L.map(k=>k.n);FC.i=0;renderCard();
+}
+function step(d){if(!FC.deck.length)return;FC.i=(FC.i+d+FC.deck.length)%FC.deck.length;$('#fc').classList.remove('flip');setTimeout(renderCard,120)}
+function mark(v){if(!FC.deck.length)return;S.kart[FC.deck[FC.i]]=v;save();step(1)}
+function renderCard(){
+  const n=FC.deck[FC.i];
+  if(n===undefined){$('#fc-front').innerHTML='<div style="font-family:var(--sans);color:var(--muted)">Bu destede kart yok.</div>';$('#fc-back').innerHTML='';$('#fc-prog').textContent='';$('#fc-bar').style.width='0';$('#fc-n1').textContent='';$('#fc-n2').textContent='';$('#fc-t1').innerHTML='';return}
+  const k=K[n], ar=$('#fc-yon').value==='ar';
+  const A=`<div class="ar">${k.ar}</div>`, B=`<div class="t">${esc(k.tr)}</div><div class="d">${arwrap(k.acik[0]||'')}</div>`;
+  $('#fc-front').innerHTML=ar?A:`<div class="t" style="font-size:27px;font-weight:600">${esc(k.tr)}</div>`;
+  $('#fc-back').innerHTML=ar?B:A+`<div class="d" style="margin-top:10px">${arwrap(k.acik[0]||'')}</div>`;
+  $('#fc-n1').textContent=$('#fc-n2').textContent='Madde '+n;
+  $('#fc-t1').innerHTML=tchip(k.tema);
+  const st=S.kart[n]; const known=FC.deck.filter(x=>S.kart[x]==='bil').length;
+  $('#fc-prog').innerHTML=`Kart ${FC.i+1} / ${FC.deck.length} · Bilinen: ${known}${st?` · Bu kart: <b style="color:${st==='bil'?'var(--ok)':'var(--bad)'}">${st==='bil'?'biliyorum':'tekrar'}</b>`:''}`;
+  $('#fc-bar').style.width=((FC.i+1)/FC.deck.length*100)+'%';
+}
+
+/* ---------- testler ---------- */
+const TYPES=[
+  {id:'karisik',ad:'Karışık',ac:'Tüm soru türlerinden'},
+  {id:'olay',ad:'Örnek olay',ac:'Mesele hangi kâideye girer?'},
+  {id:'anlam',ad:'Anlam',ac:'Arapça kâidenin Türkçesi'},
+  {id:'bosluk',ad:'Boşluk doldurma',ac:'Arapça metni tamamla'},
+  {id:'numara',ad:'Madde numarası',ac:'Numara ↔ kâide'},
+  {id:'istisna',ad:'İstisna',ac:'Kâidenin istisnasını bul'}
+];
+let TT='karisik';
+$('#t-types').innerHTML=TYPES.map(t=>`<button class="optcard ${t.id===TT?'on':''}" data-t="${t.id}"><b>${t.ad}</b><span>${t.ac}</span></button>`).join('');
+$$('#t-types .optcard').forEach(b=>b.onclick=()=>{TT=b.dataset.t;$$('#t-types .optcard').forEach(x=>x.classList.toggle('on',x===b))});
+
+function distractors(k,n,pool){
+  const ex=new Set([k.n,...k.ilgili]); KAIDELER.forEach(o=>{if(o.ilgili.includes(k.n))ex.add(o.n)});
+  const same=pool.filter(o=>o.tema===k.tema&&!ex.has(o.n)), other=pool.filter(o=>o.tema!==k.tema&&!ex.has(o.n));
+  const a=pick(same,Math.min(2,same.length)); return a.concat(pick(other.filter(o=>!a.includes(o)),n-a.length));
+}
+const optK=o=>({h:`<span><span class="ar" style="font-size:22px">${o.ar}</span><br><span style="font-size:16px;color:var(--ink2)">${esc(o.tr)}</span></span>`,n:o.n});
+function makeQ(type,k){
+  const P=KQ;
+  if(type==='olay'){ if(!k.ornek.length)return null;
+    const ex=k.ornek[Math.floor(Math.random()*k.ornek.length)];
+    const opts=[k,...distractors(k,3,P)].map(optK);
+    return {type,n:k.n,q:`<div>${arwrap(ex)}</div><div style="margin-top:10px;font-size:18px;color:var(--ink2)">Bu mesele aşağıdaki kâidelerden hangisine örnektir?</div>`,opts,c:k.n}; }
+  if(type==='anlam'){
+    const opts=[k,...distractors(k,3,P)].map(o=>({h:esc(o.tr),n:o.n}));
+    return {type,n:k.n,q:`<span class="ar">${k.ar}</span>Bu kâidenin anlamı aşağıdakilerden hangisidir?`,opts,c:k.n}; }
+  if(type==='numara'){
+    if(Math.random()<.5){const opts=[k,...distractors(k,3,P)].map(optK);
+      return {type,n:k.n,q:`Mecelle’nin <b>${k.n}. maddesi</b> aşağıdakilerden hangisidir?`,opts,c:k.n};}
+    const near=shuffle(P.filter(o=>o.n!==k.n&&Math.abs(o.n-k.n)<=12)).slice(0,3);
+    const opts=[k,...near].map(o=>({h:`<b style="font-family:var(--sans)">Madde ${o.n}</b>`,n:o.n}));
+    return {type,n:k.n,q:`<span class="ar">${k.ar}</span><span style="font-size:18px">“${esc(k.tr)}”</span><br>Bu kâide Mecelle’nin kaçıncı maddesidir?`,opts,c:k.n}; }
+  if(type==='bosluk'){const b=BOSLUK.find(x=>x.n===k.n); if(!b)return null;
+    const opts=[{h:`<span class="ar">${b.c}</span>`,n:'c'},...b.y.map((y,i)=>({h:`<span class="ar">${y}</span>`,n:'y'+i}))];
+    return {type,n:k.n,q:`<span class="ar">${b.s.replace('____','<span style="border-bottom:2px solid var(--gold);padding:0 30px;color:var(--gold)">؟</span>')}</span>Boşluğa gelecek ifade hangisidir?`,opts,c:'c'}; }
+  if(type==='istisna'){ if(!k.istisna.length)return null;
+    const ist=k.istisna[Math.floor(Math.random()*k.istisna.length)];
+    let fake=pick(k.ornek,3); if(fake.length<3)fake=fake.concat(pick(P.filter(o=>o.n!==k.n).flatMap(o=>o.ornek),3-fake.length));
+    const opts=[{h:arwrap(ist),n:'c'},...fake.map((f,i)=>({h:arwrap(f),n:'y'+i}))];
+    return {type,n:k.n,q:`<span class="ar">${k.ar}</span><span style="font-size:18px">“${esc(k.tr)}”</span><br>Aşağıdakilerden hangisi bu kâidenin <b>istisnası</b> olarak zikredilir?`,opts,c:'c'}; }
+}
+let RUN=null;
+$('#t-start').onclick=()=>{
+  const tema=$('#t-tema').value, say=+$('#t-say').value, kap=$('#t-kapsam').value;
+  let pool=KQ.filter(k=>!tema||k.tema===tema);
+  if(kap==='yanlis')pool=pool.filter(k=>S.test[k.n]&&S.test[k.n].son===0);
+  if(kap==='calisilan')pool=pool.filter(k=>S.calisildi[k.n]);
+  const types=TT==='karisik'?['olay','olay','anlam','bosluk','numara','istisna']:[TT];
+  // her kâide için olası soruları üret
+  let cand=[];
+  pool.forEach(k=>shuffle(types).some(t=>{const q=makeQ(t,k);if(q){cand.push(q);return true}}));
+  // yeterli değilse aynı kâidelerden farklı türde ek soru
+  if(cand.length<say){for(const k of shuffle(pool)){for(const t of shuffle(types)){if(cand.length>=say)break;if(cand.some(c=>c.n===k.n&&c.type===t))continue;const q=makeQ(t,k);if(q)cand.push(q)}}}
+  cand=shuffle(cand).slice(0,say);
+  if(!cand.length){$('#t-msg').textContent='Bu seçimle oluşturulabilecek soru bulunamadı. Kapsamı veya türü değiştirin.';return}
+  $('#t-msg').textContent='';
+  cand.forEach(q=>q.opts=shuffle(q.opts));
+  RUN={qs:cand,i:0,dogru:0,yanlis:[],tema,TT};
+  $('#t-setup').style.display='none';$('#t-run').style.display='block';showQ();
+};
+const TN=Object.fromEntries(TYPES.map(t=>[t.id,t.ad]));
+function showQ(){
+  const q=RUN.qs[RUN.i], k=K[q.n];
+  $('#t-run').innerHTML=`<div class="qtop"><span>Soru ${RUN.i+1} / ${RUN.qs.length}</span><span>Doğru: ${RUN.dogru}</span></div>
+   <div class="bar" style="width:100%;margin-bottom:22px"><i style="width:${RUN.i/RUN.qs.length*100}%"></i></div>
+   <div class="box"><div class="qtype">${TN[q.type]} · ${TEMALAR[k.tema].ad}</div>
+   <div class="qtext">${q.q}</div>
+   <div class="ans">${q.opts.map((o,i)=>`<button data-i="${i}"><span class="L">${'ABCD'[i]}</span>${o.h}</button>`).join('')}</div>
+   <div class="fb" id="fb"></div>
+   <div class="qnav"><button class="btn ghost sm" id="q-quit">Testi bitir</button><button class="btn" id="q-next" style="display:none">${RUN.i+1<RUN.qs.length?'Sonraki soru →':'Sonucu gör'}</button></div></div>`;
+  $$('.ans button').forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+  $('#q-next').onclick=()=>{RUN.i++;RUN.i<RUN.qs.length?showQ():showResult()};
+  $('#q-quit').onclick=()=>showResult(true);
+  window.scrollTo({top:$('#v-test').offsetTop-80,behavior:'smooth'});
+}
+function answer(i){
+  const q=RUN.qs[RUN.i], k=K[q.n], ok=q.opts[i].n===q.c;
+  $$('.ans button').forEach((b,j)=>{b.disabled=true;if(q.opts[j].n===q.c)b.classList.add('ok');else if(j===i)b.classList.add('no')});
+  const r=S.test[k.n]||{d:0,y:0,son:null}; ok?r.d++:r.y++; r.son=ok?1:0; S.test[k.n]=r; save();
+  if(ok)RUN.dogru++;else RUN.yanlis.push(k.n);
+  let extra='';
+  if(q.type==='olay'&&k.ornek.length>1)extra='';
+  if(q.type==='istisna')extra=`<div style="margin-top:6px;font-size:16px;color:var(--ink2)">Diğer seçenekler kâidenin uygulandığı örnek meselelerdir.</div>`;
+  const fb=$('#fb'); fb.className='fb show '+(ok?'ok':'no');
+  fb.innerHTML=`<b class="v">${ok?'Doğru!':'Yanlış.'} Madde ${k.n}</b><span class="ar">${k.ar}</span> — ${esc(k.tr)}<div style="margin-top:6px;font-size:16.5px;color:var(--ink2)">${arwrap(k.acik[0]||'')}</div>${extra}<button class="linkbtn" onclick="jump(${k.n})">Kâideyi incele →</button>`;
+  $('#q-next').style.display='';
+}
+function showResult(early){
+  const n=early?RUN.i+(($('#fb')&&$('#fb').classList.contains('show'))?1:0):RUN.qs.length;
+  if(!n){backSetup();return}
+  const p=Math.round(RUN.dogru/n*100), C=2*Math.PI*72;
+  S.gecmis.unshift({t:Date.now(),d:RUN.dogru,n,tur:TN[RUN.TT],tema:RUN.tema?TEMALAR[RUN.tema].ad:'Tüm temalar'}); S.gecmis=S.gecmis.slice(0,20); save();
+  const msg=p>=85?'Çok iyi! Kâidelere hâkimsiniz.':p>=60?'İyi gidiyorsunuz; yanlış yaptığınız kâideleri tekrar edin.':'Kâideleri bir kez daha okuyup tekrar deneyin.';
+  const W=[...new Set(RUN.yanlis)];
+  $('#t-run').innerHTML=`<div class="box result"><div class="kicker">Test Sonucu</div>
+   <div class="ring"><svg width="170" height="170"><circle cx="85" cy="85" r="72" fill="none" stroke="#e7dfcf" stroke-width="14"/><circle cx="85" cy="85" r="72" fill="none" stroke="${p>=60?'var(--ok)':'var(--bad)'}" stroke-width="14" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p/100)}"/></svg><b>%${p}<small>${RUN.dogru} / ${n} doğru</small></b></div>
+   <p style="font-size:20px">${msg}</p>
+   ${W.length?`<div class="wrongs"><h3>Tekrar etmeniz gereken kâideler</h3><ul>${W.map(x=>`<li><button class="linkbtn" style="font-size:17px" onclick="jump(${x})">Madde ${x}</button> — <span class="ar" style="font-size:20px">${K[x].ar}</span> · ${esc(K[x].tr)}</li>`).join('')}</ul></div>`:''}
+   <div style="display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap">
+    ${W.length?`<button class="btn" id="r-wrong">Yanlışları yeniden çöz</button>`:''}
+    <button class="btn ghost" id="r-new">Yeni test</button></div></div>`;
+  $('#r-new').onclick=backSetup;
+  if(W.length)$('#r-wrong').onclick=()=>{const qs=[];W.forEach(x=>{const types=RUN.TT==='karisik'?['olay','anlam','bosluk','numara','istisna']:[RUN.TT];for(const t of shuffle(types)){const q=makeQ(t,K[x]);if(q){q.opts=shuffle(q.opts);qs.push(q);break}}});RUN={qs:shuffle(qs),i:0,dogru:0,yanlis:[],tema:RUN.tema,TT:RUN.TT};showQ()};
+}
+function backSetup(){$('#t-run').style.display='none';$('#t-setup').style.display='block'}
+
+/* ---------- ilerleme ---------- */
+function renderProgress(){
+  const cal=Object.keys(S.calisildi).length, bil=KQ.filter(k=>S.kart[k.n]==='bil').length;
+  const tot=Object.values(S.test).reduce((a,r)=>({d:a.d+r.d,y:a.y+r.y}),{d:0,y:0});
+  const pct=tot.d+tot.y?Math.round(tot.d/(tot.d+tot.y)*100):0;
+  const card=(b,s,c)=>`<div class="box" style="padding:18px 20px"><div class="stat"><b style="color:${c}">${b}</b><span>${s}</span></div></div>`;
+  $('#p-stats').innerHTML=card(cal+' / 99','kâide çalışıldı','var(--green)')+card(bil+' / 99','kartta biliniyor','var(--gold)')+card(tot.d+tot.y,'soru cevaplandı','var(--ink)')+card('%'+pct,'genel doğru oranı',pct>=60?'var(--ok)':'var(--bad)');
+  $('#p-grid').innerHTML=KQ.map(k=>{const r=S.test[k.n];let s=0;if(S.calisildi[k.n])s=1;if(s&&S.kart[k.n]==='bil')s=2;if(r&&r.son===1&&(S.calisildi[k.n]||S.kart[k.n]==='bil'))s=3;
+    return `<div class="pcell ${s?'s'+s:''} ${r&&r.son===0?'w':''}" title="Md. ${k.n}: ${esc(k.tr)}" onclick="jump(${k.n})">${k.n}</div>`}).join('');
+  $('#p-tema').innerHTML=Object.entries(TEMALAR).filter(([t])=>t!=='tanim').map(([t,T])=>{const L=KQ.filter(k=>k.tema===t);let d=0,y=0;L.forEach(k=>{const r=S.test[k.n];if(r){d+=r.d;y+=r.y}});const p=d+y?Math.round(d/(d+y)*100):null;
+    return `<div class="row"><span><i style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${T.renk};margin-right:7px"></i>${T.ad}</span><div class="bar"><i style="width:${p||0}%;background:${T.renk}"></i></div><span style="text-align:right;color:var(--muted)">${p===null?'—':'%'+p}</span></div>`}).join('');
+  $('#p-hist').innerHTML=S.gecmis.length?`<table class="cmp"><thead><tr><th>Tarih</th><th>Tür</th><th>Tema</th><th>Sonuç</th></tr></thead><tbody>${S.gecmis.map(g=>`<tr><td>${new Date(g.t).toLocaleString('tr-TR',{dateStyle:'short',timeStyle:'short'})}</td><td>${g.tur}</td><td>${g.tema}</td><td><b>${g.d}/${g.n}</b> (%${Math.round(g.d/g.n*100)})</td></tr>`).join('')}</tbody></table>`:'<p style="color:var(--muted);font-family:var(--sans);font-size:14px">Henüz test çözülmedi.</p>';
+}
+$('#p-reset').onclick=()=>{if(confirm('Tüm ilerleme kayıtları silinsin mi?')){S={calisildi:{},kart:{},test:{},gecmis:[]};save();renderProgress();renderList();buildDeck()}};
+
+/* başlangıç */
+function setHH(){document.documentElement.style.setProperty('--hh',$('header').offsetHeight+'px')}
+setHH();addEventListener('resize',setHH);
+let h='';try{h=location.hash.slice(1)}catch(e){} if(['giris','kaideler','kartlar','test','ilerleme'].includes(h))go(h);
+</script>
+</body>
+</html>

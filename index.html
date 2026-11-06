@@ -1220,8 +1220,10 @@ function go(v,opt){
   if(v==='ilerleme')renderProgress();
   if(v==='kartlar')renderCard();
   if(!opt||!opt.keep)window.scrollTo({top:0});
-  try{history.replaceState(null,'','#'+v)}catch(e){}
+  if(!opt||!opt.pop){try{const cur=history.state&&history.state.mv;if(cur===v)history.replaceState({mv:v},'','#'+v);else history.pushState({mv:v},'','#'+v)}catch(e){}}
 }
+// telefonda/tablette kaydırarak geri: bir önceki ekrana dön
+window.addEventListener('popstate',e=>{const v=(e.state&&e.state.mv)||(location.hash||'').slice(1)||'giris';if(['giris','kaideler','kartlar','test','ilerleme'].includes(v))go(v,{pop:true})});
 $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 
 /* ---------- giriş ---------- */
@@ -1495,7 +1497,7 @@ $('#p-reset').onclick=()=>{if(confirm('Tüm ilerleme kayıtları silinsin mi?'))
 /* başlangıç */
 function setHH(){document.documentElement.style.setProperty('--hh',$('header').offsetHeight+'px')}
 setHH();addEventListener('resize',setHH);
-let h='';try{h=location.hash.slice(1)}catch(e){} if(['giris','kaideler','kartlar','test','ilerleme'].includes(h))go(h);
+let h='';try{h=location.hash.slice(1)}catch(e){} if(['giris','kaideler','kartlar','test','ilerleme'].includes(h)){go(h,{pop:true});try{history.replaceState({mv:h},'')}catch(e){}}else{try{history.replaceState({mv:'giris'},'')}catch(e){}}
 </script>
 </body>
 </html>

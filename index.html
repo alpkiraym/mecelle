@@ -211,9 +211,10 @@ footer{text-align:center;font-family:var(--sans);font-size:12.5px;color:var(--mu
   header{position:static}
   .brand .ar{font-size:24px}
 }
-.imza{padding:0!important;border:0!important;text-align:left!important;background:var(--green);color:#efe6d2;font-family:var(--sans);font-size:13.5px;letter-spacing:.4px}
-.imza div{max-width:1150px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.imza b{color:#e8cf8f;font-weight:600;letter-spacing:1px}
+.sig{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:5px 12px calc(5px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font-family:var(--sans);font-size:.7rem;letter-spacing:.02em;color:var(--muted)}
+.sig b{color:var(--green);font-weight:600}
+.sig i{font-style:normal;opacity:.5}
+body{padding-bottom:34px}
 @media print{header,nav,.toolbar,.kfoot{display:none!important}.kbody{display:block!important}section.view{display:none!important}#v-kaideler{display:block!important}}
 </style>
 </head>
@@ -378,7 +379,7 @@ footer{text-align:center;font-family:var(--sans);font-size:12.5px;color:var(--mu
   </div>
 </section>
 </main>
-<footer class="imza"><div><span>© 2026 · Her hakkı saklıdır.</span><span>Designed by: <b>M.ALPKİRAY</b></span></div></footer>
+<div class="sig"><span>© 2026 Her hakkı saklıdır</span><i>·</i><span>Designed by: <b>M.ALPKİRAY</b></span></div>
 
 <script>
 const TEMALAR = {
